@@ -39,7 +39,7 @@ export default function SignUp() {
     const handleSubmit = event => {
     event.preventDefault();
     const data = new FormData(event.target);
-    console.log(event)
+    console.log(event.target)
     fetch(process.env.REACT_APP_API_URL + "/users/signup", {
         method: "post",
         body: {
