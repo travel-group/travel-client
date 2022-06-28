@@ -35,19 +35,17 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
-    let navigate = useNavigate();
+    // let navigate = useNavigate();
     const handleSubmit = event => {
     event.preventDefault();
-    const data = new FormData(event.target);
-    console.log(event)
     fetch(process.env.REACT_APP_API_URL + "/users/signup", {
         method: "post",
         body: {
-        firstname : data.get('firstname'),
-        lastname : data.get('lastname'),
-        email: data.get('email'),
-        username : data.get('username'),
-        password: data.get('password')
+        firstname : event.target.querySelector('input[name=firstName]').value,
+        lastname : event.target.querySelector('input[name=lastName]').value,
+        email: event.target.querySelector('input[name=email]').value,
+        username : event.target.querySelector('input[name=username]').value,
+        password: event.target.querySelector('input[name=password]').value
         }
     });
     // const data = new FormData(event.currentTarget);
