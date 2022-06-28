@@ -7,30 +7,9 @@ import { CardActionArea } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 
-
-
-
-
-export default function ActionAreaCard() {
+export default function allPosts() {
     return (
-        <div>
-            <div >
-                <ul className="nav justify-content-center">
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">All posts</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">mohannad</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">aymen</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">mohammed</a>
-                    </li>
-                </ul>
-            </div>
-            <div className="d-flex justify-content-evenly flex-wrap">
+        <div className="d-flex justify-content-evenly flex-wrap">
                 <Link to="/singlepost" className="card m-4" style={{ width: "18rem", backgroundColor: "", textDecoration: "none", color: "black" }}>
                     <Card sx={{ maxWidth: 345 }}>
                         <CardActionArea>
@@ -199,52 +178,5 @@ export default function ActionAreaCard() {
                     </Card>
                 </Link>
             </div>
-        </div>
-    );
+    )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React from "react";
-// import { Link } from "react-router-dom";
-
-
-
-// export const Posts = () => {
-//     return (
-//         <div>
-//             <div className="d-flex justify-content-center">
-//                 <h1>
-//                     welcom to Posts
-//                 </h1>
-//             </div>
-//             <div className="d-flex justify-content-center">
-//                 <h1>
-//                     If you want to go to SinglePost,
-//                     <Link to="/SinglePost">click here</Link>
-//                 </h1>
-//             </div>
-//             < div className="d-flex justify-content-center">
-//                 <Link to="/" type="button" className="btn btn-primary">Back</Link>
-//             </div>
-//         </div>
-//     )
-// }
-
-
-// export default Posts;

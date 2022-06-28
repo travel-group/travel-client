@@ -2,10 +2,9 @@ import React from "react";
 
 
 
-export const Footer = () => {
+export const Footer = () => {  
     return (
         <footer className="bg-black text-center text-white">
-
             <div className="container p-4 pb-0">
 
                 <section className="mb-4">
