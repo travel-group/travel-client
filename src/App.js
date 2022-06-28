@@ -8,39 +8,37 @@ import Posts from "./components/Posts";
 import SignUp from "./components/account/SignUp";
 import Account from "./components/account/Account";
 
-
-
-
 const App = () => {
   return (
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/signup' element={<SignUp />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/posts' element={<Posts />} />
-        <Route path='/singlepost' element={<SinglePost />} />
-        <Route path='/account' element={<Account />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/posts" element={<Posts />} />
+        <Route path="/singlepost" element={<SinglePost />} />
+        <Route path="/account" element={<Account />} />
       </Routes>
       <Footer />
     </BrowserRouter>
   );
-}
+};
 
 export default App;
 
-
-
-
-
-
 // <BrowserRouter>
-{/* <Routes> */ }
-{/* <SignUp /> */ }
-{/* <Route path='/' element={<Home />} />
+{
+  /* <Routes> */
+}
+{
+  /* <SignUp /> */
+}
+{
+  /* <Route path='/' element={<Home />} />
         <Route path='/blog' element={<Posts />} />
         <Route path='/blog/:slug' element={<SinglePost />} />
       </Routes>
-      <Footer /> */}
-    // </BrowserRouter>
+      <Footer /> */
+}
+// </BrowserRouter>
