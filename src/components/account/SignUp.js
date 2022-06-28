@@ -35,10 +35,10 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
-    // let navigate = useNavigate();
-    const handleSubmit = event => {
+    let navigate = useNavigate();
+    const handleSubmit = async event => {
         event.preventDefault();
-        fetch(process.env.REACT_APP_API_URL + "/users/signup", {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}` + "/users/signup", {
             method: "post",
             body: JSON.stringify({
                 firstname: event.target.querySelector('input[name=firstName]').value,
@@ -50,7 +50,14 @@ export default function SignUp() {
             headers: {
                 'Content-Type': 'application/json'
             }
-        });
+        })
+        const userRegistered = await response.json()
+        if (userRegistered.success) {
+            // redirect to sign in
+            navigate('/login')
+        } else {
+            window.alert(userRegistered.messages)
+        }
         // const data = new FormData(event.currentTarget);
         // console.log({
         //     email: data.get('email'),
@@ -120,7 +127,7 @@ export default function SignUp() {
                                     required
                                     fullWidth
                                     id="username"
-                                    label="User name"
+                                    label="Username"
                                     name="username"
                                     autoComplete="username"
                                 />
