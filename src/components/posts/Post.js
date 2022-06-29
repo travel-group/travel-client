@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function posts() {
     return (
         <div>
-            <div >
+            <div>
                 <ul className="nav justify-content-center mt-5 mb-5">
                     <Link to='/allposts' className="nav-item">
                         <a className="nav-link" href="#">All posts</a>

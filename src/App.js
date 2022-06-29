@@ -33,17 +33,17 @@ const App = () => {
 export default App;
 
 // <BrowserRouter>
-{
+// {
   /* <Routes> */
-}
-{
+// }
+// {
   /* <SignUp /> */
-}
-{
+// }
+// {
   /* <Route path='/' element={<Home />} />
         <Route path='/blog' element={<Posts />} />
         <Route path='/blog/:slug' element={<SinglePost />} />
       </Routes>
       <Footer /> */
-}
+// }
 // </BrowserRouter>

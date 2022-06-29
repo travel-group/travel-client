@@ -11,32 +11,35 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
+import { useRequest } from "../../hooks/useRequest"
+import { useContext , useRef } from "react"
+import { AuthContext } from "../../contexts/AuthContext"
+
 
 const theme = createTheme();
 
 export default function Login() {
   const navigate = useNavigate();
-  const handleSubmit = async event => {
+  const sendRequest = useRequest()
+  const appCtx = useContext(AuthContext)
+  const userNameOrEmailRef = useRef()
+  const passwordRef = useRef()
+  const handleSubmit = (event) => {
     event.preventDefault();
-    const response = await fetch(`${process.env.REACT_APP_API_URL}` + "/users/login",
-      {
-        method: "post",
-        body: JSON.stringify({
-          userNameOrEmail: event.target.querySelector("input[name=fuserNameOrEmail]").value,
-          password: event.target.querySelector("input[name=password]").value
-        }),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }
-    );
-    const userRegistered = await response.json();
-    if (userRegistered.success) {
-      // redirect to sign in
-      navigate("/");
-    } else {
-      window.alert(userRegistered.messages);
-    }
+    const password = passwordRef.current.value
+    const userNameOrEmail = userNameOrEmailRef.current.value
+    sendRequest(process.env.REACT_APP_API_URL + "/users/login" , {} , {
+          userNameOrEmail,
+          password 
+      } , { type: 'json' }, 'POST')
+      .then((response) => {
+          if (response.success) {
+              appCtx.login(response)
+              navigate('/')
+          } else {
+              window.alert(response.messages)
+          }
+      });
   };
 
   return (
@@ -85,16 +88,18 @@ export default function Login() {
                 margin="normal"
                 required
                 fullWidth
+                ref={userNameOrEmailRef}
                 id="userNameOrEmail"
                 label="Username or Email"
                 name="userNameOrEmail"
-                autoComplete="userNameOrEmail"
+                autoComplete="current-userNameOrEmail"
                 autoFocus
               />
               <TextField
                 margin="normal"
                 required
                 fullWidth
+                ref={passwordRef}
                 name="password"
                 label="Password"
                 type="password"
@@ -111,9 +116,6 @@ export default function Login() {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  {/* <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link> */}
                 </Grid>
                 <Grid item>
                   <Link
