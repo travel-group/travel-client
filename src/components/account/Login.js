@@ -12,32 +12,35 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { useRequest } from "../../hooks/useRequest"
-import { useContext , useRef } from "react"
-import { AuthContext } from "../../contexts/AuthContext"
+// import { useContext , useRef } from "react"
+// import { AuthContext } from "../../contexts/AuthContext"
+import {AuthContext} from '../../contexts/AuthContext'
+import { useContext } from "react";
 
 
 const theme = createTheme();
 
-export default function Login() {
+ const Login =() => {
   const navigate = useNavigate();
   const sendRequest = useRequest()
-  const appCtx = useContext(AuthContext)
-  const userNameOrEmailRef = useRef()
-  const passwordRef = useRef()
+  // const userNameOrEmailRef = useRef()
+  // const passwordRef = useRef()
+  const auth = useContext(AuthContext)
   const handleSubmit = (event) => {
     event.preventDefault();
-    const password = passwordRef.current.value
-    const userNameOrEmail = userNameOrEmailRef.current.value
-    sendRequest(process.env.REACT_APP_API_URL + "/users/login" , {} , {
-          userNameOrEmail,
-          password 
+    // const password = passwordRef.current.value
+    // const userNameOrEmail = userNameOrEmailRef.current.value
+    sendRequest(process.env.REACT_APP_API_URL + "/users/login" , {} ,{ 
+          userNameOrEmail : event.target.querySelector('input[name=userNameOrEmail]').value,
+          password : event.target.querySelector('input[name=password]').value 
       } , { type: 'json' }, 'POST')
       .then((response) => {
-          if (response.success) {
-              appCtx.login(response)
-              navigate('/')
+
+        if (response.success) {
+        auth.login(response)
+          navigate('/allposts')
           } else {
-              window.alert(response.messages)
+              window.alert(response.messages.join(''))
           }
       });
   };
@@ -88,7 +91,7 @@ export default function Login() {
                 margin="normal"
                 required
                 fullWidth
-                ref={userNameOrEmailRef}
+                // ref={userNameOrEmailRef}
                 id="userNameOrEmail"
                 label="Username or Email"
                 name="userNameOrEmail"
@@ -99,7 +102,7 @@ export default function Login() {
                 margin="normal"
                 required
                 fullWidth
-                ref={passwordRef}
+                // ref={passwordRef}
                 name="password"
                 label="Password"
                 type="password"
@@ -134,3 +137,4 @@ export default function Login() {
     </ThemeProvider>
   );
 }
+export default Login

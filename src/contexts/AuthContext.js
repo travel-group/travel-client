@@ -1,6 +1,11 @@
 import { createContext, useState } from "react";
 
-export const AuthContext = createContext()
+export const AuthContext = createContext({
+    isAuthenticated: false,
+    token: '',
+    login: (token) => {},
+    logout: () => {}
+})
 
 export const AuthProvider = (props) => {
     const [token, setToken] = useState(window.localStorage.getItem('token'))
@@ -22,9 +27,9 @@ export const AuthProvider = (props) => {
         setIsAuthenticated(false)
     }
     return <AuthContext.Provider value={{
+        login,
         isAuthenticated,
         token,
-        login,
         logout,
         user
     }}>
