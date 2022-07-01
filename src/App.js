@@ -8,21 +8,23 @@ import LogOut from "./components/account/Logout";
 import Nav from "./components/Nav";
 import Post from "./components/posts/Post";
 import AllPosts from "./components/posts/AllPosts";
-import Countries from "./components/posts/Countries";
+import Countries from "./components/posts/Summer";
 import Account from "./components/account/Account";
 import Posts from "././components/account/user/Posts";
 import AddPost from "./components/account/user/AddPost";
 import EditProfile from "./components/account/user/EditProfile";
 import EditPost from "./components/account/user/EditPost";
 
-import Account2 from "./components/posts/account2";
+import Account2 from "./components/posts/Winter";
+import Summer from "./components/posts/Summer";
+import Winter from "./components/posts/Winter";
 
 
 const App = () => {
   return (
     <BrowserRouter>
       <Nav />
-      <Post/>
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
@@ -33,6 +35,9 @@ const App = () => {
         {/* <Route path="/account" element={<Account />} /> */}
         <Route path="/allposts" element={<AllPosts />} />
         <Route path="/countries" element={<Countries />} />
+        <Route path="/summer" element={<Summer />} />
+        <Route path="/winter" element={<Winter />} />
+
 
 
           <Route path="/account" element={<Account/>} >
