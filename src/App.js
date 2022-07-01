@@ -2,28 +2,47 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import SinglePost from "./components/SinglePost";
-import Login from "./components/account/Login";
-import Nav from "./components/Nav";
-import Posts from "./components/posts/Post";
 import SignUp from "./components/account/SignUp";
-import Account from "./components/account/Account";
+import Login from "./components/account/Login";
+import LogOut from "./components/account/Logout";
+import Nav from "./components/Nav";
+import Post from "./components/posts/Post";
 import AllPosts from "./components/posts/AllPosts";
 import Countries from "./components/posts/Countries";
+import Account from "./components/account/Account";
+import Posts from "././components/account/user/Posts";
+import AddPost from "./components/account/user/AddPost";
+import EditProfile from "./components/account/user/EditProfile";
+import EditPost from "./components/account/user/EditPost";
+
+import Account2 from "./components/posts/account2";
+
 
 const App = () => {
   return (
     <BrowserRouter>
       <Nav />
-      <Posts/>
+      <Post/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        {/* <Route path="/posts" element={<Posts />} /> */}
+        <Route path="/logout" element={<LogOut />} />
+        <Route path="/" element={<Home />} />
         <Route path="/singlepost" element={<SinglePost />} />
-        <Route path="/account" element={<Account />} />
+        {/* <Route path="/account" element={<Account />} /> */}
         <Route path="/allposts" element={<AllPosts />} />
         <Route path="/countries" element={<Countries />} />
+
+
+          <Route path="/account" element={<Account/>} >
+            <Route path="/account/posts" element={<Posts/>}/>
+            <Route path="/account/addpost" element={<AddPost/>}/>
+            <Route path="/account/post/:id" element={<EditPost/>}/>
+            <Route path="/account/user/:id" element={<EditProfile/>}/> 
+          </Route> 
+
+
       </Routes>
       <Footer />
     </BrowserRouter>

@@ -20,7 +20,7 @@ import { useContext } from "react";
 
 const theme = createTheme();
 
- const Login =() => {
+  const Login =() => {
   const navigate = useNavigate();
   const sendRequest = useRequest()
   // const userNameOrEmailRef = useRef()
@@ -35,12 +35,12 @@ const theme = createTheme();
           password : event.target.querySelector('input[name=password]').value 
       } , { type: 'json' }, 'POST')
       .then((response) => {
-
         if (response.success) {
-        auth.login(response)
+          auth.login(response)
+          // console.log(auth.login)  
           navigate('/allposts')
           } else {
-              window.alert(response.messages.join(''))
+              window.alert(response.messages)
           }
       });
   };

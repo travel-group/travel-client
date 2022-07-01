@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { AuthContext } from "../contexts/AuthContext"
+import { AuthContext } from "../../../contexts/AuthContext"
 import { useNavigate } from "react-router-dom"
 
 export const useRequest = () => {
@@ -31,6 +31,9 @@ export const useRequest = () => {
                     return
                 }
                 return response.json().then(data => {
+                    if (data?.success && config?.redirect) {
+                        // navigate(config.redirect)
+                    }
                     return data
                 })
             })

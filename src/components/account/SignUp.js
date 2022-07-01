@@ -32,17 +32,10 @@ export default function SignUp() {
         })
         const userRegistered = await response.json()
         if (userRegistered.success) {
-            // redirect to sign in
             navigate('/login')
         } else {
             window.alert(userRegistered.messages)
         }
-        // const data = new FormData(event.currentTarget);
-        // console.log({
-        //     email: data.get('email'),
-        //     password: data.get('password'),
-        // });
-        // navigate("/login", { replace: true });
     };
 
     return (

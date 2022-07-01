@@ -1,5 +1,3 @@
-
-
 import { Link } from "react-router-dom";
 
 const Nav = () => {
@@ -28,7 +26,7 @@ const Nav = () => {
                             <Link to="/account" className="dropdown-item" style={{ color: "black" }} >My Account</Link>
                             <Link to="/signup" className="dropdown-item" style={{ color: "black" }} >Sign Up</Link>
                             <Link to="/login" className="dropdown-item" style={{ color: "black" }} >Login</Link>
-                            <a className="dropdown-item" style={{ color: "black" }} >Logout</a>
+                            <Link to='/logout' className="dropdown-item" style={{ color: "black" }} >Logout</Link>
                         </ul>
                     </li>
                 </div>
