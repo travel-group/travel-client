@@ -38,7 +38,7 @@ const theme = createTheme();
         if (response.success) {
           auth.login(response)
           // console.log(auth.login)  
-          navigate('/allposts')
+          navigate('/')
           } else {
               window.alert(response.messages)
           }
@@ -55,7 +55,7 @@ const theme = createTheme();
           sm={4}
           md={7}
           sx={{
-            backgroundImage: "url(https://source.unsplash.com/random)",
+            backgroundImage: "url(https://expatguideturkey.com/wp-content/uploads/2020/10/which-ways-may-be-followed-in-making-long-distance-travel.jpg)",
             backgroundRepeat: "no-repeat",
             backgroundColor: t =>
               t.palette.mode === "light"
