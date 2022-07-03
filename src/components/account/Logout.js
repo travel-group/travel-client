@@ -9,11 +9,13 @@ const LogOut = () => {
 
     useEffect(() => {
         auth.logout()
-        alert('Logged Out')
+        window.alert('Logged Out')
         navigate('/login')
     }, [])
     return (
-        <></>
+        <>
+            
+        </>
     )
 }
 

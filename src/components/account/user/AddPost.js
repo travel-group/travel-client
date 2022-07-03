@@ -39,7 +39,7 @@ const AddPost = () => {
 			.then((response) => {
 				setCategories(response.data)
 			})
-	}, )
+	}, [])
 
 	const sendRequest = useRequest()
 	const addpost = () => {

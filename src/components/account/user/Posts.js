@@ -15,7 +15,7 @@ const Posts = () => {
                 setPosts(response.data)
             }
         })
-    }, )
+    }, [])
 
     const deletPost = (id) => {
         if (window.confirm('Do you want to delete this post ?')) {

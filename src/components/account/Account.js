@@ -9,25 +9,24 @@ const Account = () => {
     const auth = useContext(AuthContext)
     const navigate = useNavigate()
 
-    console.log(auth,'------------')
-    // useEffect(() => {
+    // console.log(auth,'------------')
+    useEffect(() => {
         if (!auth.isAuthenticated) {
           navigate('/login')
-          console.log('---no auth---------')
+          // console.log('---no auth---------')
 
         }
-  //  }, [])
-  if (auth?.user?.admin==false) {
-   
-    console.log('--ppppppppppppp---------')
-
-  }
-
-
-    return (
-        <div className="my-5">
-           
-            dfsdfger
+      }, [])
+        // if (auth?.user?.admin==false) {
+          
+          //   console.log('--ppppppppppppp---------')
+          
+          // }
+          
+          
+          return (
+            <div className="my-5">
+            {(auth?.user?.admin == false) && (<User />)}
         </div>
     )
 }

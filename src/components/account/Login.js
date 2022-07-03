@@ -123,10 +123,10 @@ const theme = createTheme();
                 <Grid item>
                   <Link
                     to="/signup"
-                    className="btn btn-outline-dark"
-                    style={{ color: "black" }}
+                    className="btn btn-ouline-dark"
+                    style={{ color: "blue" }}
                   >
-                    {" "}Sign Up
+                      Don't have an account ? Sign Up
                   </Link>
                 </Grid>
               </Grid>

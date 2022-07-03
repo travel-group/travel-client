@@ -22,7 +22,7 @@ const EditPost = () => {
 					setSelectedCountries(postTags)
 				}
 			})
-	}, )
+	}, [])
 	const descriptionRef = useRef()
 	const imageRef = useRef()
 	const titleRef = useRef()
@@ -60,7 +60,7 @@ const EditPost = () => {
         setCategories(response?.data);
       }
     );
-  }, );
+  }, []);
 
 	const addpost = () => {
 		const formdata = new FormData();
