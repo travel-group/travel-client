@@ -1,27 +1,36 @@
 import { useContext, useEffect } from "react"
 import { AuthContext } from "../../contexts/AuthContext"
 import { useNavigate } from "react-router-dom"
-// import Admin from "./admin/Admin"
 import User from "./user/User"
+// import Admin from "./admin/Admin"
+// import allPosts from "../posts/AllPosts"
 
 const Account = () => {
 
-  const auth = useContext(AuthContext)
-  const navigate = useNavigate()
+    const auth = useContext(AuthContext)
+    const navigate = useNavigate()
 
-  useEffect(() => {
-  if (!auth.isAuthenticated) {
-    navigate('/login')
-  }
+    // console.log(auth,'------------')
+    useEffect(() => {
+        if (!auth.isAuthenticated) {
+          navigate('/login')
+          // console.log('---no auth---------')
+
+        }
     }, [])
-  if (auth?.user?.admin == false) {
-    console.log('--ppppppppppppp---------')
-  }
 
-          
-          return (
-            <div className="my-5">
-            {(auth?.user?.admin == false) && (<User />)}
+
+    console.log(auth?.user)
+
+    if (auth?.user?.admin==false) {
+
+      console.log('--ppppppppppppp---------')}
+
+    return (
+        <div>
+        {/* <User/> */}
+        {/* sdfghjkl; */}
+          {(auth?.user?.admin === false) && (<User />)}
         </div>
     )
 }
