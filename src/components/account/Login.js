@@ -14,13 +14,13 @@ import { useNavigate } from "react-router-dom";
 import { useRequest } from "../../hooks/useRequest"
 // import { useContext , useRef } from "react"
 // import { AuthContext } from "../../contexts/AuthContext"
-import {AuthContext} from '../../contexts/AuthContext'
+import { AuthContext } from '../../contexts/AuthContext'
 import { useContext } from "react";
 
 
 const theme = createTheme();
 
-  const Login =() => {
+const Login = () => {
   const navigate = useNavigate();
   const sendRequest = useRequest()
   // const userNameOrEmailRef = useRef()
@@ -30,18 +30,18 @@ const theme = createTheme();
     event.preventDefault();
     // const password = passwordRef.current.value
     // const userNameOrEmail = userNameOrEmailRef.current.value
-    sendRequest(process.env.REACT_APP_API_URL + "/users/login" , {} ,{ 
-          userNameOrEmail : event.target.querySelector('input[name=userNameOrEmail]').value,
-          password : event.target.querySelector('input[name=password]').value 
-      } , { type: 'json' }, 'POST')
+    sendRequest(process.env.REACT_APP_API_URL + "/users/login", {}, {
+      userNameOrEmail: event.target.querySelector('input[name=userNameOrEmail]').value,
+      password: event.target.querySelector('input[name=password]').value
+    }, { type: 'json' }, 'POST')
       .then((response) => {
         if (response.success) {
           auth.login(response)
           // console.log(auth.login)  
           navigate('/')
-          } else {
-              window.alert(response.messages)
-          }
+        } else {
+          window.alert(response.messages)
+        }
       });
   };
 
@@ -121,12 +121,13 @@ const theme = createTheme();
                 <Grid item xs>
                 </Grid>
                 <Grid item>
+                  Don't have an account ?
                   <Link
                     to="/signup"
                     className="btn btn-ouline-dark"
                     style={{ color: "blue" }}
                   >
-                      Don't have an account ? Sign Up
+                    Sign Up
                   </Link>
                 </Grid>
               </Grid>

@@ -125,13 +125,18 @@ export default function SignUp() {
                         >
                             Sign Up
                         </Button>
-                        <Link
-                    to="/login"
-                    className="btn btn-ouline"
-                    style={{ color: "blue"}}
-                    >
-                        <p style= {{ color : ""}}>Do you already have an account ? Log In</p>
-                    </Link>
+                        <div className="container-fluid d-flex justify-content-center">
+                            <p> Do you already have an account ?
+                                <Link
+                                    to="/login"
+                                    className="btn btn-ouline"
+                                    style={{
+                                        color: "blue",
+                                    }}
+                                >Log In
+                                </Link>
+                            </p>
+                        </div>
                     </Box>
                 </Box>
             </Container>
