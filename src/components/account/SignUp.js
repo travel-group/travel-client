@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
+import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
@@ -124,6 +125,13 @@ export default function SignUp() {
                         >
                             Sign Up
                         </Button>
+                        <Link
+                    to="/login"
+                    className="btn btn-ouline"
+                    style={{ color: "blue"}}
+                    >
+                        <p style= {{ color : ""}}>Do you already have an account ? Log In</p>
+                    </Link>
                     </Box>
                 </Box>
             </Container>

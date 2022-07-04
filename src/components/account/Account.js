@@ -9,6 +9,7 @@ const Account = () => {
   const auth = useContext(AuthContext)
   const navigate = useNavigate()
 
+<<<<<<< HEAD
   console.log(auth, '------------')
   // useEffect(() => {
   if (!auth.isAuthenticated) {
@@ -29,6 +30,28 @@ const Account = () => {
       asdfghjk
     </div>
   )
+=======
+    // console.log(auth,'------------')
+    useEffect(() => {
+        if (!auth.isAuthenticated) {
+          navigate('/login')
+          // console.log('---no auth---------')
+
+        }
+      }, [])
+        // if (auth?.user?.admin==false) {
+          
+          //   console.log('--ppppppppppppp---------')
+          
+          // }
+          
+          
+          return (
+            <div className="my-5">
+            {(auth?.user?.admin == false) && (<User />)}
+        </div>
+    )
+>>>>>>> 601b70885a970a89c5c2f67d33429f458b37a688
 }
 
 export default Account
