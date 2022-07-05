@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react"
 import { AuthContext } from "../../contexts/AuthContext"
 import { useNavigate } from "react-router-dom"
-// import Admin from "./admin/Admin"
+import Admin from "./admin/admin"
 import User from "./user/User"
 
 const Account = () => {
@@ -16,9 +16,10 @@ const Account = () => {
     }, [])
 
     return (
-        <div>
+        <div className="my-5">
 
-          {(auth?.user?.admin == false) && (<User />)}
+          {(auth?.user?.admin === false) && (<User />)}
+          {(auth?.user?.admin === true) && (<Admin />)}
 
         </div>
     )
