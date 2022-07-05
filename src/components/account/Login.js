@@ -120,14 +120,14 @@ const Login = () => {
               <Grid container>
                 <Grid item xs>
                 </Grid>
-                <Grid item>
-                  Don't have an account ?
+                <Grid item className="btn btn-ouline-dark  container-fluid mt-3 mb-2">
+                  Don't have an account ?  
                   <Link
                     to="/signup"
-                    className="btn btn-ouline-dark"
-                    style={{ color: "blue" }}
+                    className=""
+                    style={{ color: "blue",  textDecoration: 'none'}}
                   >
-                    Sign Up
+                       Sign Up
                   </Link>
                 </Grid>
               </Grid>

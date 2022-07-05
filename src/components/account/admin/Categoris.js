@@ -8,9 +8,9 @@ const Categories = () => {
 	const titleRef = useRef();
 
 	useEffect(() => {
-		sendRequest(`${process.env.REACT_APP_API_URL}/categories/`, {}, {},{
-				auth: true,
-			},
+		sendRequest(`${process.env.REACT_APP_API_URL}/categories/`, {}, {}, {
+			auth: true,
+		},
 			"GET"
 		).then((response) => {
 			if (response?.success) {
@@ -21,9 +21,9 @@ const Categories = () => {
 
 	const deletCategorie = (id) => {
 		if (window.confirm("Do you want to delete this Categorie")) {
-			sendRequest(`${process.env.REACT_APP_API_URL}/categories/${id}`, {}, {},{
-					auth: true,
-				},
+			sendRequest(`${process.env.REACT_APP_API_URL}/categories/${id}`, {}, {}, {
+				auth: true,
+			},
 				"DELETE"
 			).then((response) => {
 				console.log(response);
@@ -39,9 +39,9 @@ const Categories = () => {
 	};
 
 	const addCat = () => {
-		sendRequest(`${process.env.REACT_APP_API_URL}/categories/`,{},{
-				title: titleRef.current.value,
-			},
+		sendRequest(`${process.env.REACT_APP_API_URL}/categories/`, {}, {
+			title: titleRef.current.value,
+		},
 			{ auth: true, type: "json" },
 			"POST"
 		).then((newCategory) => {

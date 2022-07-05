@@ -125,14 +125,12 @@ export default function SignUp() {
                         >
                             Sign Up
                         </Button>
-                        <div className="container-fluid d-flex justify-content-center">
+                        <div className="btn btn-ouline-dark  container-fluid mt-2 mb-2">
                             <p> Do you already have an account ?
                                 <Link
                                     to="/login"
                                     className="btn btn-ouline"
-                                    style={{
-                                        color: "blue",
-                                    }}
+                                    style={{ color: "blue", textDecoration: 'none' }}
                                 >Log In
                                 </Link>
                             </p>

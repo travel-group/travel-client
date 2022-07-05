@@ -17,10 +17,10 @@ export default function allPosts() {
             <div>
                 <ul className="nav justify-content-center mt-3 mb-2">
                     <Link to="/allposts" className="nav-item" style={{ textDecoration: 'none'}}>
-                        <a className="nav-link" ><b>All posts</b></a>
+                        <a className="nav-link"><b>All posts</b></a>
                     </Link>
-                    <Link to="/winter" className="nav-item" style={{ textDecoration: 'none'}}>
-                        <a className="nav-link" href="#"><b>Winter areas</b></a>
+                    <Link to="/winter" className="nav-item" style={{ textDecoration: 'none' }}>
+                        <a className="nav-link" href="#" ><b>Winter areas</b></a>
                     </Link>
                     <Link to="/summer" className="nav-item" style={{ textDecoration: 'none'}}>
                         <a className="nav-link" href="#"><b>Summer areas</b></a>
