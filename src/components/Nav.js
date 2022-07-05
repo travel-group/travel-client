@@ -1,6 +1,21 @@
 import { Link } from "react-router-dom";
+import { useContext, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import { AuthContext } from "../contexts/AuthContext"
 
 const Nav = () => {
+    const auth = useContext(AuthContext)
+    const navigate = useNavigate()
+
+    const logout = () => {    
+        auth.logout()
+        if(window.confirm('Log Out')) {
+            navigate('/login')
+        } else {
+            navigate('/allposts')
+        }
+    }
+
     return (
 
         <nav className=" container-fluid bg-black px-5 ">
@@ -23,10 +38,10 @@ const Nav = () => {
                             Dropdown
                         </a>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <Link to="/account" className="dropdown-item" style={{ color: "black" }} >My Account</Link>
-                            <Link to="/signup" className="dropdown-item" style={{ color: "black" }} >Sign Up</Link>
-                            <Link to="/login" className="dropdown-item" style={{ color: "black" }} >Login</Link>
-                            <Link to='/logout' className="dropdown-item" style={{ color: "black" }} >Logout</Link>
+                            <li> <Link to="/account" className="dropdown-item" style={{ color: "black" }} >My Account</Link></li>
+                            <li> <Link to="/signup" className="dropdown-item" style={{ color: "black" }} >Sign Up</Link></li>
+                            <li> <Link to="/login" className="dropdown-item" style={{ color: "black" }} >Login</Link> </li>
+                            <li onClick={()=> logout()} className="dropdown-item" style={{ color: "black" }} >Logout</li>
                         </ul>
                     </li>
                 </div>

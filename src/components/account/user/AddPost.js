@@ -33,11 +33,12 @@ const AddPost = () => {
 	useEffect(() => {
 		sendRequest(process.env.REACT_APP_API_URL + "/countries")
 			.then((response) => {
-				setCountries(response.data)
+				setCountries(response?.countries)
 			})
 		sendRequest(process.env.REACT_APP_API_URL + "/categories")
 			.then((response) => {
-				setCategories(response.data)
+				console.log(response)
+				setCategories(response?.categories)
 			})
 	}, [])
 
@@ -61,6 +62,7 @@ const AddPost = () => {
 				}
 			})
 	}
+	console.log(`categories`,categories)
 	return (
 		<div className="custombox clearfix">
 			<h4 className="small-title">Create Post</h4>
@@ -72,11 +74,11 @@ const AddPost = () => {
 						<div className="container-fluid">
 							<div className="row mb-4">
 								{
-									countries?.map((countries, i) => {
+									countries?.map((country, i) => {
 										return (
 											<div key={i} className='my-2 col-md-4 col-lg-3'>
-												<input onChange={handleCountryToggle} type='checkbox' value={countries.id} id={`countries-${countries.id}`} />&nbsp;
-												<label htmlFor={`countries-${countries.id}`}>{countries}</label>
+												<input onChange={handleCountryToggle} type='checkbox' value={country?.id} id={`countries-${country.id}`} />&nbsp;
+												<label htmlFor={`countries-${country.id}`}>{country?.country_name}</label>
 											</div>
 										)
 									})
@@ -88,11 +90,11 @@ const AddPost = () => {
 						<div className="container-fluid">
 							<div className="row mb-4">
 								{
-									categories?.map((categories, i) => {
+									categories?.map((category, i) => {
 										return (
 											<div key={i} className='my-2 col-md-4 col-lg-3'>
-												<input onChange={handleCategoryToggle} type='checkbox' value={categories.id} id={`categories-${categories.id}`} />&nbsp;
-												<label htmlFor={`categories-${categories.id}`}>{categories}</label>
+												<input onChange={handleCategoryToggle} type='checkbox' value={category.id} id={`categories-${category.id}`} />&nbsp;
+												<label htmlFor={`categories-${category.id}`}>{category?.name}</label>
 											</div>
 										)
 									})

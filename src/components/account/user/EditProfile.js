@@ -35,7 +35,7 @@ const EditProfile = () => {
             .then((response) => {
                 window.alert(response?.messages?.join(' '))
                 if (response?.success) {
-                    navigate('/sign-out')
+                    navigate('/logout')
                 }
             });
     }
