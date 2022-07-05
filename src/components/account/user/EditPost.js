@@ -51,16 +51,16 @@ const EditPost = () => {
 		setSelectedCategories(categoriesClone)
 	}
 
-  useEffect(() => {
+    useEffect(() => {
     sendRequest(process.env.REACT_APP_API_URL + "/countries").then((response) => {
-      setCountries(response?.data);
+        setCountries(response?.data);
     });
     sendRequest(process.env.REACT_APP_API_URL + "/categories").then(
-      (response) => {
+        (response) => {
         setCategories(response?.data);
-      }
+        }
     );
-  }, []);
+    }, []);
 
 	const addpost = () => {
 		const formdata = new FormData();

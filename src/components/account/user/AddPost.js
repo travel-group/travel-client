@@ -4,7 +4,7 @@ import { useRequest } from "../hooks2/useRequest"
 
 const AddPost = () => {
 	const navigate = useNavigate()
-	const Ref = useRef()
+	const descriptionRef = useRef()
 	const imageRef = useRef()
 	const titleRef = useRef()
 	const [countries, setCountries] = useState([])
@@ -33,12 +33,12 @@ const AddPost = () => {
 	useEffect(() => {
 		sendRequest(process.env.REACT_APP_API_URL + "/countries")
 			.then((response) => {
-				setCountries(response?.countries)
+				setCountries(response?.data)
 			})
 		sendRequest(process.env.REACT_APP_API_URL + "/categories")
 			.then((response) => {
 				console.log(response)
-				setCategories(response?.categories)
+				setCategories(response?.data)
 			})
 	}, [])
 
@@ -46,7 +46,7 @@ const AddPost = () => {
 	const addpost = () => {
 		const formdata = new FormData();
 		formdata.append('title', titleRef.current.value)
-		formdata.append('description', Ref.current.value)
+		formdata.append('description', descriptionRef.current.value)
 		for (var i = 0; i < selectedCategories.length; i++) {
 			formdata.append('categories[]', selectedCategories[i])
 		}
@@ -62,31 +62,36 @@ const AddPost = () => {
 				}
 			})
 	}
-	console.log(`categories`,categories)
 	return (
 		<div className="custombox clearfix">
-			<h4 className="small-title">Create Post</h4>
+			<h5 className="small-title">Create Post</h5>
 			<div className="row">
 				<div className="col-lg-12">
 					<div className="form-wrapper">
 						<input type={"text"} ref={titleRef} className="form-control" placeholder="Title" />
-						<h4>Select Post countries</h4>
+						<h5>Select Post country</h5>
 						<div className="container-fluid">
 							<div className="row mb-4">
-								{
+							<div  className="my-2 col-md-4 col-lg-3">
+							<select className="form-select" onClick={handleCountryToggle} >
+												<optgroup label="Select Country">
+												{
 									countries?.map((country, i) => {
 										return (
-											<div key={i} className='my-2 col-md-4 col-lg-3'>
-												<input onChange={handleCountryToggle} type='checkbox' value={country?.id} id={`countries-${country.id}`} />&nbsp;
-												<label htmlFor={`countries-${country.id}`}>{country?.country_name}</label>
-											</div>
+                                                    <option key={i}>{
+														country?.country_name
+														}</option>
 										)
 									})
 								}
+												</optgroup>
+												</select>
+							</div>
+				
 							</div>
 						</div>
 
-						<h4>Select Post Categories</h4>
+						<h5>Select Post Categories</h5>
 						<div className="container-fluid">
 							<div className="row mb-4">
 								{
@@ -102,8 +107,8 @@ const AddPost = () => {
 							</div>
 						</div>
 						
-						<input type={"file"} ref={imageRef} className="form-control" placeholder="picture" />
-						<textarea ref={Ref} className="form-control" placeholder="Your Article"></textarea>
+						<input type={"file"} ref={imageRef} className="form-control" placeholder="image" />
+						<textarea ref={descriptionRef} className="form-control" placeholder=" Description">Description</textarea>
 						<button onClick={addpost} type="button" className="btn btn-primary">Submit</button>
 					</div>
 				</div>

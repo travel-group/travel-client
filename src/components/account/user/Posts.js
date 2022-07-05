@@ -46,19 +46,19 @@ const Posts = () => {
                     return (
                         <tr key={i}>
                             <td>{post?.title}</td>
-                            <td>{post?.categories?.map((c, i) => {
+                            <td>{post?.category_id?.map((c, i) => {
                                 return (
                                     <React.Fragment key={i}>
                                         <span key={i}>{c.title}</span>
-                                        {(i < post.categories.length - 1) && <>, </>}
+                                        {(i < post.category_id.length - 1) && <>, </>}
                                     </React.Fragment>
                                 )
                             })}</td>
-                            <td>{post?.countries?.map((c, i) => {
+                            <td>{post?.country_id?.map((c, i) => {
                                 return (
                                     <React.Fragment key={i}>
                                         <span key={i}>{c.title}</span>
-                                        {(i < post.countries.length - 1) && <>, </>}
+                                        {(i < post.country_id.length - 1) && <>, </>}
                                     </React.Fragment>
                                 )
                             })}</td>
