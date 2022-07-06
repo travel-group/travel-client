@@ -7,6 +7,8 @@ const AddPost = () => {
 	const descriptionRef = useRef()
 	const imageRef = useRef()
 	const titleRef = useRef()
+	const categorieseRef = useRef()
+	const countriesRef = useRef()
 	const [countries, setCountries] = useState([])
 	const [categories, setCategories] = useState([])
 	const [selectedCountries, setSelectedCountries] = useState([])
@@ -37,7 +39,6 @@ const AddPost = () => {
 			})
 		sendRequest(process.env.REACT_APP_API_URL + "/categories")
 			.then((response) => {
-				console.log(response)
 				setCategories(response?.data)
 			})
 	}, [])
@@ -47,58 +48,51 @@ const AddPost = () => {
 		const formdata = new FormData();
 		formdata.append('title', titleRef.current.value)
 		formdata.append('description', descriptionRef.current.value)
-		for (var i = 0; i < selectedCategories.length; i++) {
-			formdata.append('categories[]', selectedCategories[i])
-		}
-		for (var i = 0; i < selectedCountries.length; i++) {
-			formdata.append('countries[]', selectedCountries[i])
-		}
+		formdata.append('category_id', categorieseRef.current.value)
+		formdata.append('country_id', countriesRef.current.value)
 		formdata.append('image', imageRef.current.files[0])
-		sendRequest(process.env.REACT_APP_API_URL + "/posts/add", {}, formdata, { auth: true }, 'post')
+		sendRequest(process.env.REACT_APP_API_URL + "/posts/add", {}, formdata, { auth: true }, 'POST')
 			.then((response) => {
-				window.alert(response?.messages?.join(' '))
+				console.log(response)
+				window.alert(response?.messages)
 				if (response?.success) {
-					navigate('/posts')
+					navigate('/account/posts')
 				}
 			})
 	}
 	return (
 		<div className="custombox clearfix">
-			<h5 className="small-title">Create Post</h5>
+			<h5 className="small-title mb-5">Create Post</h5>
 			<div className="row">
 				<div className="col-lg-12">
 					<div className="form-wrapper">
-						<input type={"text"} ref={titleRef} className="form-control" placeholder="Title" />
-						<h5>Select Post country</h5>
+						<input type={"text"} ref={titleRef} className="form-control mb-5" placeholder="Title" />
+						<h5>Select Post Country</h5>
 						<div className="container-fluid">
 							<div className="row mb-4">
-							<div  className="my-2 col-md-4 col-lg-3">
-							<select className="form-select" onClick={handleCountryToggle} >
-												<optgroup label="Select Country">
-												{
-									countries?.map((country, i) => {
-										return (
-                                                    <option key={i}>{
-														country?.country_name
-														}</option>
-										)
-									})
-								}
-												</optgroup>
-												</select>
-							</div>
-				
+							    <div  className="my-2 col-md-4 col-lg-3">
+							        <select className="form-select" ref={countriesRef} onClick={handleCountryToggle}>
+										<optgroup label="Select Country">
+												{countries?.map((country, i) => {
+									            	return (
+                                                        <option value={country.id} key={i}>{country?.country_name}</option>
+										            )
+									              })
+								                }
+							            </optgroup>
+							        </select>
+							    </div>
 							</div>
 						</div>
 
-						<h5>Select Post Categories</h5>
+						<h5>Select Post Category</h5>
 						<div className="container-fluid">
 							<div className="row mb-4">
 								{
 									categories?.map((category, i) => {
 										return (
 											<div key={i} className='my-2 col-md-4 col-lg-3'>
-												<input onChange={handleCategoryToggle} type='checkbox' value={category.id} id={`categories-${category.id}`} />&nbsp;
+												<input ref={categorieseRef} onChange={handleCategoryToggle}  type='checkbox' value={category.id} id={`categories-${category.id}`} />&nbsp;
 												<label htmlFor={`categories-${category.id}`}>{category?.name}</label>
 											</div>
 										)
@@ -107,9 +101,9 @@ const AddPost = () => {
 							</div>
 						</div>
 						
-						<input type={"file"} ref={imageRef} className="form-control" placeholder="image" />
-						<textarea ref={descriptionRef} className="form-control" placeholder=" Description">Description</textarea>
-						<button onClick={addpost} type="button" className="btn btn-primary">Submit</button>
+						<input type={"file"} ref={imageRef} className="form-control my-5 col-md-4 col-lg-3" placeholder="image" />
+						<textarea ref={descriptionRef} className="form-control" placeholder=" Description"></textarea>
+						<button onClick={addpost} type="button" className="btn btn-primary mt-5 col-md-4 col-lg-3">Submit</button>
 					</div>
 				</div>
 			</div>

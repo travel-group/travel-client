@@ -39,6 +39,7 @@ const Posts = () => {
                     <th>Title</th>
                     <th>Category</th>
                     <th>Country</th>
+                    <th>Delete / Edit</th>
                 </tr>
             </thead>
             <tbody>
