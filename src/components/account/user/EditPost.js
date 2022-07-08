@@ -1,44 +1,45 @@
 import { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , useParams } from "react-router-dom";
 import { useRequest } from "../hooks2/useRequest";
 
 const EditPost = () => {
 	const navigate = useNavigate()
-	// const { id } = useParams()
+	const  id  = useParams()
 	const sendRequest = useRequest()
 	const [post, setPost] = useState({
 		title: '',
-		excerpt: '',
 		description: ''
 	})
 	useEffect(() => {
-		sendRequest (process.env.REACT_APP_API_URL + "/posts/:id ", {}, {}, { auth: true })
+		sendRequest (`${process.env.REACT_APP_API_URL}/posts/${id}` , {}, {}, { auth: true })
 			.then(response => {
 				if (response?.success) {
 					setPost(response?.data)
-					const postCategories = response?.data?.Categories?.map((c) => c.id)
-					const postTags = response?.data?.Tags?.map((t) => t.id)
+					const postCategories = response?.data?.categories?.map((c) => c.id)
+					const postCountries = response?.data?.countries.map((t) => t.id)
 					setSelectedCategories(postCategories)
-					setSelectedCountries(postTags)
+					setSelectedCountries(postCountries)
 				}
 			})
 	}, [])
-	const descriptionRef = useRef()
 	const imageRef = useRef()
 	const titleRef = useRef()
+	const descriptionRef = useRef()
+	const countriesRef = useRef()
+	const categorieseRef = useRef()
 	const [countries, setCountries] = useState([])
 	const [categories, setCategories] = useState([])
 	const [selectedCountries, setSelectedCountries] = useState([])
 	const [selectedCategories, setSelectedCategories] = useState([])
-	const handleTagToggle = (e) => {
-		const tagsClone = [...selectedCountries]
+	const handlecountryToggle = (e) => {
+		const tagsCountries = [...selectedCountries]
 		const value = parseInt(e.target.value)
-		if (tagsClone.indexOf(value) === -1) {
-			tagsClone.push(value)
+		if (tagsCountries.indexOf(value) === -1) {
+			tagsCountries.push(value)
 		} else {
-			tagsClone.splice(tagsClone.indexOf(value), 1)
+			tagsCountries.splice(tagsCountries.indexOf(value), 1)
 		}
-		setSelectedCountries(tagsClone)
+		setSelectedCountries(tagsCountries)
 	}
 	const handleCategoryToggle = (e) => {
 		const categoriesClone = [...selectedCategories]
@@ -52,11 +53,12 @@ const EditPost = () => {
 	}
 
     useEffect(() => {
-    sendRequest(process.env.REACT_APP_API_URL + "/countries").then((response) => {
+    sendRequest(process.env.REACT_APP_API_URL + "/countries")
+	.then((response) => {
         setCountries(response?.data);
     });
-    sendRequest(process.env.REACT_APP_API_URL + "/categories").then(
-        (response) => {
+    sendRequest(process.env.REACT_APP_API_URL + "/categories")
+	.then((response) => {
         setCategories(response?.data);
         }
     );
@@ -66,16 +68,12 @@ const EditPost = () => {
 		const formdata = new FormData();
 		formdata.append('title', titleRef.current.value)
 		formdata.append('description', descriptionRef.current.value)
-		for (var i = 0; i < selectedCategories.length; i++) {
-			formdata.append('categories[]', selectedCategories[i])
-		}
-		for (var i = 0; i < selectedCountries.length; i++) {
-			formdata.append('countries[]', selectedCountries[i])
-		}
+		formdata.append('category_id', categorieseRef.current.value)
+		formdata.append('country_id', countriesRef.current.value)
 		formdata.append('image', imageRef.current.files[0])
-		sendRequest(process.env.REACT_APP_API_URL + "/posts/:id", {}, formdata, { auth: true }, 'put')
+		sendRequest(`${process.env.REACT_APP_API_URL}/posts/${id}`, {}, formdata, { auth: true }, 'put')
 			.then((response) => {
-				window.alert(response?.messages?.join(' '))
+				window.alert(response?.messages)
 				if (response?.success) {
 					navigate('/posts')
 				}
@@ -90,38 +88,35 @@ const EditPost = () => {
 						<input type={"text"}
 							onChange={(e) => { setPost({ ...post, title: e.target.value }) }}
 							value={post?.title} ref={titleRef} className="form-control" placeholder="Title" />
-						<h4>Select Post Countries</h4>
+						<h4>Select Post Country</h4>
 						<div className="container-fluid">
 							<div className="row mb-4">
-								{
-									countries?.map((countries, i) => {
-										return (
-											<div key={i} className='my-2 col-md-4 col-lg-3'>
-												<input
-													checked={selectedCountries.includes(countries.id)}
-													onChange={handleTagToggle} type='checkbox' value={countries.id} id={`countries-${countries.id}`} />&nbsp;
-												<label htmlFor={`countries-${countries.id}`}>{countries}</label>
-											</div>
-										)
-									})
-								}
+							<select className="form-select" ref={countriesRef} onClick={handlecountryToggle}>
+										<optgroup label="Select Country">
+												{countries?.map((country, i) => {
+									            	return (
+                                                        <option value={country.id} key={i}>{country?.country_name}</option>
+										            )
+									              })
+								                }
+							            </optgroup>
+							        </select>
 							</div>
 						</div>
 
-						<h4>Select Post Categories</h4>
+						<h4>Select Post Category</h4>
 						<div className="container-fluid">
 							<div className="row mb-4">
 								{
-									categories?.map((categories, i) => {
+									categories?.map((category, i) => {
 										return (
 											<div key={i} className='my-2 col-md-4 col-lg-3'>
-												<input
-													checked={selectedCategories.includes(categories.id)}
-													onChange={handleCategoryToggle} type='checkbox' value={categories.id} id={`categories-${categories.id}`} />&nbsp;
-												<label htmlFor={`categories-${categories.id}`}>{categories}</label>
+												<input ref={categorieseRef} onChange={handleCategoryToggle}  type='checkbox' value={category.id} id={`categories-${category.id}`} />&nbsp;
+												<label htmlFor={`categories-${category.id}`}>{category?.name}</label>
 											</div>
 										)
 									})
+
 								}
 							</div>
 						</div>
@@ -129,7 +124,7 @@ const EditPost = () => {
 							post?.picture && <img src={post?.picture} width='100' style={{ height: 'auto' }} />
 						}
 						<input type={"file"} ref={imageRef} className="form-control" placeholder="picture" />
-						<textarea ref={descriptionRef} className="form-control" placeholder="Your Article" defaultValue={post?.description}></textarea>
+						<textarea ref={descriptionRef} className="form-control" placeholder="Your Description" defaultValue={post?.description}></textarea>
 						<button onClick={addpost} type="button" className="btn btn-primary">Submit</button>
 					</div>
 				</div>

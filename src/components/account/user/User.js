@@ -3,12 +3,14 @@ import Posts from "./Posts";
 import AddPost from "./AddPost";
 import EditProfile from "./EditProfile";
 import EditPost from "./EditPost";
+import UserSides from "./UserSides";
 
 const User = () => {
     return (
     <>
         <div className="container">
         <div className="row">
+        <UserSides/>
             <div className="col-lg-9">
             <Routes>
                 <Route exact path="/" element={<Posts />} />

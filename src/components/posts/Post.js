@@ -16,6 +16,9 @@ export default function post() {
                     <Link to="/summer" className="nav-item" style={{ textDecoration: 'none'}}>
                         <a className="nav-link" href="#"><b>Summer areas</b></a>
                     </Link>
+                    <Link to="/other" className="nav-item" style={{ textDecoration: 'none'}}>
+                        <a className="nav-link" href="#"><b>Other</b></a>
+                    </Link>
                 </ul>
             </div>
         </div>

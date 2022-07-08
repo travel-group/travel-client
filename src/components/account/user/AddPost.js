@@ -53,9 +53,9 @@ const AddPost = () => {
 		formdata.append('image', imageRef.current.files[0])
 		sendRequest(process.env.REACT_APP_API_URL + "/posts/add", {}, formdata, { auth: true }, 'POST')
 			.then((response) => {
-				console.log(response)
-				window.alert(response?.messages)
+				// window.alert(response?.messages)
 				if (response?.success) {
+					alert('Post Created')
 					navigate('/account/posts')
 				}
 			})
@@ -75,7 +75,7 @@ const AddPost = () => {
 										<optgroup label="Select Country">
 												{countries?.map((country, i) => {
 									            	return (
-                                                        <option value={country.id} key={i}>{country?.country_name}</option>
+                                                        <option placeholder="Select Country" value={country.id} key={i}>{country?.country_name}</option>
 										            )
 									              })
 								                }
@@ -87,18 +87,34 @@ const AddPost = () => {
 
 						<h5>Select Post Category</h5>
 						<div className="container-fluid">
+						<div className="container-fluid">
 							<div className="row mb-4">
+							    <div  className="my-2 col-md-4 col-lg-3">
+							        <select className="form-select" ref={categorieseRef} onClick={handleCategoryToggle}>
+										<optgroup placeholder="Select Category" label="Select Category">
+												{categories?.map((category, i) => {
+									            	return (
+                                                        <option value={category.id} key={i}>{category?.name}</option>
+										            )
+									              })
+								                }
+							            </optgroup>
+							        </select>
+							    </div>
+							</div>
+						</div>
+							{/* <div className="row mb-4">
 								{
 									categories?.map((category, i) => {
 										return (
 											<div key={i} className='my-2 col-md-4 col-lg-3'>
-												<input ref={categorieseRef} onChange={handleCategoryToggle}  type='checkbox' value={category.id} id={`categories-${category.id}`} />&nbsp;
-												<label htmlFor={`categories-${category.id}`}>{category?.name}</label>
+												<input ref={categorieseRef} onClick={handleCategoryToggle}  type='radio' value={category.id} id={`categories-${category.id}`} />&nbsp;
+												<label >{category?.name}</label>
 											</div>
 										)
 									})
 								}
-							</div>
+							</div> */}
 						</div>
 						
 						<input type={"file"} ref={imageRef} className="form-control my-5 col-md-4 col-lg-3" placeholder="image" />

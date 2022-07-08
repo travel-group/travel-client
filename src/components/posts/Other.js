@@ -1,6 +1,3 @@
-import { useContext, useEffect } from "react"
-import { AuthContext } from "../../contexts/AuthContext"
-import { useNavigate } from "react-router-dom"
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -8,11 +5,10 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { Link } from 'react-router-dom';
-// import Admin from "./admin/Admin"
-
-const Winter = () => {
 
 
+
+export default function Other () {
     return (
         <div>
             <div>
@@ -38,16 +34,16 @@ const Winter = () => {
                             <CardMedia
                                 component="img"
                                 height="140"
-                                image="https://www.unitedtowers.com/Media/2021/04/08/image-LlJtrYkN3ka1lCVqhfwyrw.jpg"
+                                image="https://cdn.britannica.com/49/139549-050-D1B8F018/Sanaa-Al-Salih-Mosque-Yemen-background.jpg"
                                 alt="green iguana"
                             />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="div">
-                                    Canada
+                                    Yemen
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary">
-                                    Canada is a parliamentary democracy and a constitutional monarchy in the Westminster tradition.
-                                    The country's head of government
+                                    This article is about the country in Western Asia. For other uses, see Yemen (disambiguation).
+                                    "Yemeni" redirects here. For the, see Yemeni,
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
@@ -57,5 +53,3 @@ const Winter = () => {
         </div>
     )
 }
-
-export default Winter

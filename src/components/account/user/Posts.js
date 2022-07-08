@@ -33,13 +33,14 @@ const Posts = () => {
     }
 
     return (
+        <>
         <table className="w-100 table table-striped">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Category</th>
-                    <th>Country</th>
+                    <th>Post Title</th>
                     <th>Delete / Edit</th>
+                    {/* <th>Category</th>
+                    <th>Country</th> */}
                 </tr>
             </thead>
             <tbody>
@@ -47,22 +48,6 @@ const Posts = () => {
                     return (
                         <tr key={i}>
                             <td>{post?.title}</td>
-                            <td>{post?.category_id?.map((c, i) => {
-                                return (
-                                    <React.Fragment key={i}>
-                                        <span key={i}>{c.title}</span>
-                                        {(i < post.category_id.length - 1) && <>, </>}
-                                    </React.Fragment>
-                                )
-                            })}</td>
-                            <td>{post?.country_id?.map((c, i) => {
-                                return (
-                                    <React.Fragment key={i}>
-                                        <span key={i}>{c.title}</span>
-                                        {(i < post.country_id.length - 1) && <>, </>}
-                                    </React.Fragment>
-                                )
-                            })}</td>
                             <td style={{whiteSpace: 'nowrap'}}>
                                 <button onClick={() => { deletPost(post.id) }} className="btn btn-primary" >Delete</button>
                                 <Link to={`/account/edit/${post.id}`}>
@@ -74,6 +59,7 @@ const Posts = () => {
                 })}
             </tbody>
         </table>
+        </>
     )
 }
 

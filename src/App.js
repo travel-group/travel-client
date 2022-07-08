@@ -14,6 +14,7 @@ import EditProfile from "./components/account/user/EditProfile";
 import EditPost from "./components/account/user/EditPost";
 import Summer from "./components/posts/Summer";
 import Winter from "./components/posts/Winter";
+import Other from "./components/posts/Other";
 
 
 const App = () => {
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/countries" element={<Countries />} />
         <Route path="/summer" element={<Summer />} />
         <Route path="/winter" element={<Winter />} />
+        <Route path="/other" element={<Other />} />
 
 
 
