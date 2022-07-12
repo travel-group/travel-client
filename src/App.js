@@ -40,8 +40,8 @@ const App = () => {
           <Route path="/account" element={<Account/>} >
             <Route path="/account/posts" element={<Posts/>}/>
             <Route path="/account/addpost" element={<AddPost/>}/>
-            <Route path="/account/post/:id" element={<EditPost/>}/>
-            <Route path="/account/user/:id" element={<EditProfile/>}/> 
+            <Route path="/account/edit/:id" element={<EditPost/>}/>
+            <Route path="/account/user" element={<EditProfile/>}/> 
           </Route> 
 
 

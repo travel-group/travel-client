@@ -34,21 +34,38 @@ const Posts = () => {
 
     return (
         <>
-        <table className="w-100 table table-striped">
+        <table className="w-70 table table-striped">
             <thead>
                 <tr>
                     <th>Post Title</th>
+                    <th>Category</th>
+                    <th>Country</th>
                     <th>Delete / Edit</th>
-                    {/* <th>Category</th>
-                    <th>Country</th> */}
                 </tr>
             </thead>
             <tbody>
                 {posts.map((post, i) => {
+                    
                     return (
                         <tr key={i}>
                             <td>{post?.title}</td>
-                            <td style={{whiteSpace: 'nowrap'}}>
+                            <td>{post?.categories?.map(( c , i )=>{
+                                return(
+                                    <React.Fragment key={i}>
+                                    <span key={i}>{c.name}</span>
+                                    {(i < post.categories.length - 1) && <>, </>}
+                                    </React.Fragment>
+                                )
+                            })}</td>
+                            <td>{post?.countries?.map(( c , i )=>{
+                                return(
+                                    <React.Fragment key={i}>
+                                    <span key={i}>{c.country_name}</span>
+                                    {(i < post.countries.length - 1) && <>, </>}
+                                    </React.Fragment>
+                                )
+                            })}</td>
+                            <td >
                                 <button onClick={() => { deletPost(post.id) }} className="btn btn-primary" >Delete</button>
                                 <Link to={`/account/edit/${post.id}`}>
                                     <button className="btn btn-primary" style={{ marginLeft: "2px" }}>Edit</button >

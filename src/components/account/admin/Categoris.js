@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Categories = () => {
 	const sendRequest = useRequest();
 	const [categories, setCategories] = useState([]);
-	const titleRef = useRef();
+	const nameRef = useRef();
 
 	useEffect(() => {
 		sendRequest(`${process.env.REACT_APP_API_URL}/categories/`, {}, {}, {
@@ -40,7 +40,7 @@ const Categories = () => {
 
 	const addCat = () => {
 		sendRequest(`${process.env.REACT_APP_API_URL}/categories/`, {}, {
-			title: titleRef.current.value,
+			title: nameRef.current.value,
 		},
 			{ auth: true, type: "json" },
 			"POST"
@@ -58,7 +58,7 @@ const Categories = () => {
 			<div className="d-flex w-100 mb-5">
 				<input
 					type={"text"}
-					ref={titleRef}
+					ref={nameRef}
 					className="form-control"
 					placeholder="Category"
 				/>

@@ -17,7 +17,7 @@ const User = () => {
                 <Route path="/posts" element={<Posts />} />
                 <Route path="/addpost" element={<AddPost />} />
                 <Route path="/edituser" element={<EditProfile />} />
-                <Route path="/edit" element={<EditPost />} />
+                <Route path="/edit/:id" element={<EditPost />} />
             </Routes>
             </div>
         </div>

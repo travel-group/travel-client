@@ -40,8 +40,8 @@ const Nav = () => {
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li> <Link to="/account" className="dropdown-item" style={{ color: "black" }} >My Account</Link></li>
                             <li> <Link to="/signup" className="dropdown-item" style={{ color: "black" }} >Sign Up</Link></li>
-                            <li> <Link to="/login" className="dropdown-item" style={{ color: "black" }} >Login</Link> </li>
-                            <li onClick={()=> logout()} className="dropdown-item" style={{ color: "black" }} >Logout</li>
+                            <li> <Link to="/login" className="dropdown-item" style={{ color: "black" }} >Log In</Link> </li>
+                            <li onClick={()=> logout()} className="dropdown-item" style={{ color: "black" }} >Log Out</li>
                         </ul>
                     </li>
                 </div>

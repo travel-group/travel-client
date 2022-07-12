@@ -67,55 +67,50 @@ const AddPost = () => {
 				<div className="col-lg-12">
 					<div className="form-wrapper">
 						<input type={"text"} ref={titleRef} className="form-control mb-5" placeholder="Title" />
-						<h5>Select Post Country</h5>
 						<div className="container-fluid">
-							<div className="row mb-4">
-							    <div  className="my-2 col-md-4 col-lg-3">
-							        <select className="form-select" ref={countriesRef} onClick={handleCountryToggle}>
-										<optgroup label="Select Country">
-												{countries?.map((country, i) => {
-									            	return (
-                                                        <option placeholder="Select Country" value={country.id} key={i}>{country?.country_name}</option>
-										            )
-									              })
-								                }
-							            </optgroup>
-							        </select>
-							    </div>
-							</div>
-						</div>
+						    <div className="container-fluid">
+						        <h5>Select Post Country</h5>
+							        <div className="row mb-4">
+							            <div  className="my-2 col-md-4 col-lg-3">
+							                <select className="form-select" ref={countriesRef} onClick={handleCountryToggle}>
+										        <optgroup placeholder="Select Country" label="Select Countryy">
+												    {countries?.map((country, i) => {
+									            	    return (
+															<>
+															<option value="none" selected disabled hidden>Select Country</option>
+                                                            <option value={country.id} key={i}>{country?.country_name}</option>
+															</>
+										                )
+									                })}
+							                    </optgroup>
+							                </select>
+							            </div>
+							        </div>
+						        </div>
+						    </div>
 
-						<h5>Select Post Category</h5>
-						<div className="container-fluid">
-						<div className="container-fluid">
-							<div className="row mb-4">
-							    <div  className="my-2 col-md-4 col-lg-3">
-							        <select className="form-select" ref={categorieseRef} onClick={handleCategoryToggle}>
-										<optgroup placeholder="Select Category" label="Select Category">
-												{categories?.map((category, i) => {
-									            	return (
-                                                        <option value={category.id} key={i}>{category?.name}</option>
-										            )
-									              })
-								                }
-							            </optgroup>
-							        </select>
-							    </div>
-							</div>
-						</div>
-							{/* <div className="row mb-4">
-								{
-									categories?.map((category, i) => {
-										return (
-											<div key={i} className='my-2 col-md-4 col-lg-3'>
-												<input ref={categorieseRef} onClick={handleCategoryToggle}  type='radio' value={category.id} id={`categories-${category.id}`} />&nbsp;
-												<label >{category?.name}</label>
-											</div>
-										)
-									})
-								}
-							</div> */}
-						</div>
+
+							<div className="container-fluid">
+						    <div className="container-fluid">
+						        <h5>Select Post Category</h5>
+							        <div className="row mb-4">
+							            <div  className="my-2 col-md-4 col-lg-3">
+							                <select className="form-select" ref={categorieseRef} onClick={handleCategoryToggle}>
+										        <optgroup placeholder="Select Category" label="Select Category">
+												    {categories?.map((category, i) => {
+									            	    return ( 
+															<>
+															<option value="none" selected disabled hidden>Select Category</option>
+                                                            <option value={category.id} key={i}>{category?.name}</option>
+															</>
+										                )
+									                })}
+							                    </optgroup>
+							                </select>
+							            </div>
+							        </div>
+						        </div>
+						    </div>
 						
 						<input type={"file"} ref={imageRef} className="form-control my-5 col-md-4 col-lg-3" placeholder="image" />
 						<textarea ref={descriptionRef} className="form-control" placeholder=" Description"></textarea>

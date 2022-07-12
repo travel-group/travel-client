@@ -71,7 +71,7 @@ const EditPost = () => {
 		formdata.append('category_id', categorieseRef.current.value)
 		formdata.append('country_id', countriesRef.current.value)
 		formdata.append('image', imageRef.current.files[0])
-		sendRequest(`${process.env.REACT_APP_API_URL}/posts/${id}`, {}, formdata, { auth: true }, 'put')
+		sendRequest(`${process.env.REACT_APP_API_URL}/posts/${id}`, {}, formdata, { auth: true }, 'PUT')
 			.then((response) => {
 				window.alert(response?.messages)
 				if (response?.success) {
@@ -81,45 +81,56 @@ const EditPost = () => {
 	}
 	return (
 		<div className="custombox clearfix">
-			<h4 className="small-title">Edit Post</h4>
-			<div className="row">
-				<div className="col-lg-12">
-					<div className="form-wrapper">
+			<h5 className="small-title">Edit Post</h5>
+			    <div className="row">
+				    <div className="col-lg-12">
+					    <div className="form-wrapper">
 						<input type={"text"}
 							onChange={(e) => { setPost({ ...post, title: e.target.value }) }}
 							value={post?.title} ref={titleRef} className="form-control" placeholder="Title" />
-						<h4>Select Post Country</h4>
 						<div className="container-fluid">
-							<div className="row mb-4">
-							<select className="form-select" ref={countriesRef} onClick={handlecountryToggle}>
-										<optgroup label="Select Country">
-												{countries?.map((country, i) => {
-									            	return (
-                                                        <option value={country.id} key={i}>{country?.country_name}</option>
-										            )
-									              })
-								                }
-							            </optgroup>
-							        </select>
-							</div>
-						</div>
+						    <div className="container-fluid">
+						        <h5>Select Post Country</h5>
+							        <div className="row mb-4">
+							            <div  className="my-2 col-md-4 col-lg-3">
+							                <select className="form-select" ref={countriesRef} onClick={handlecountryToggle}>
+										        <optgroup placeholder="Select Country" label="Select Countryy">
+												    {countries?.map((country, i) => {
+									            	    return (
+															<>
+															<option value="none" selected disabled hidden>Select Country</option>
+                                                            <option value={country.id} key={i}>{country?.country_name}</option>
+															</>
+										                )
+									                })}
+							                    </optgroup>
+							                </select>
+							            </div>
+							        </div>
+						        </div>
+						    </div>
 
-						<h4>Select Post Category</h4>
 						<div className="container-fluid">
-							<div className="row mb-4">
-								{
-									categories?.map((category, i) => {
-										return (
-											<div key={i} className='my-2 col-md-4 col-lg-3'>
-												<input ref={categorieseRef} onChange={handleCategoryToggle}  type='checkbox' value={category.id} id={`categories-${category.id}`} />&nbsp;
-												<label htmlFor={`categories-${category.id}`}>{category?.name}</label>
-											</div>
-										)
-									})
-
-								}
-							</div>
-						</div>
+						    <div className="container-fluid">
+						        <h5>Select Post Category</h5>
+							        <div className="row mb-4">
+							            <div  className="my-2 col-md-4 col-lg-3">
+							                <select className="form-select" ref={categorieseRef} onClick={handleCategoryToggle}>
+										        <optgroup placeholder="Select Category" label="Select Category">
+												    {categories?.map((category, i) => {
+									            	    return (
+															<>
+															<option value="none" selected disabled hidden>Select Category</option>
+                                                            <option value={category.id} key={i}>{category?.name}</option>
+															</>
+										                )
+									                })}
+							                    </optgroup>
+							                </select>
+							            </div>
+							        </div>
+						        </div>
+						    </div>
 						{
 							post?.picture && <img src={post?.picture} width='100' style={{ height: 'auto' }} />
 						}
