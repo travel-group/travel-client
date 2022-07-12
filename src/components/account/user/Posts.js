@@ -45,26 +45,31 @@ const Posts = () => {
             </thead>
             <tbody>
                 {posts.map((post, i) => {
-                    
+                    console.log(posts)
                     return (
                         <tr key={i}>
                             <td>{post?.title}</td>
-                            <td>{post?.categories?.map(( c , i )=>{
-                                return(
-                                    <React.Fragment key={i}>
-                                    <span key={i}>{c.name}</span>
-                                    {(i < post.categories.length - 1) && <>, </>}
-                                    </React.Fragment>
-                                )
-                            })}</td>
-                            <td>{post?.countries?.map(( c , i )=>{
-                                return(
-                                    <React.Fragment key={i}>
-                                    <span key={i}>{c.country_name}</span>
-                                    {(i < post.countries.length - 1) && <>, </>}
-                                    </React.Fragment>
-                                )
-                            })}</td>
+                            <td>{post.category.name
+                            // post?.categories?.map(( c , i )=>{
+                            //     return(
+                            //         <React.Fragment key={i}>
+                            //         <span key={i}>{c.name}</span>
+                            //         {(i < post.categories.length - 1) && <>, </>}
+                            //         </React.Fragment>
+                            //     )
+                            // })
+                            }
+                            </td>
+                            <td>{post.country.country_name
+                            // post?.countries?.map(( c , i )=>{
+                            //     return(
+                            //         <React.Fragment key={i}>
+                            //         <span key={i}>{c.country_name}</span>
+                            //         {(i < post.countries.length - 1) && <>, </>}
+                            //         </React.Fragment>
+                            //     )
+                            // })
+                            }</td>
                             <td >
                                 <button onClick={() => { deletPost(post.id) }} className="btn btn-primary" >Delete</button>
                                 <Link to={`/account/edit/${post.id}`}>

@@ -4,7 +4,7 @@ import { useRequest } from "../hooks2/useRequest";
 
 const EditPost = () => {
 	const navigate = useNavigate()
-	const  id  = useParams()
+	const {id}  = useParams()
 	const sendRequest = useRequest()
 	const [post, setPost] = useState({
 		title: '',

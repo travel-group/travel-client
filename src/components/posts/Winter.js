@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../contexts/AuthContext"
 import { useNavigate } from "react-router-dom"
 import * as React from 'react';
@@ -9,50 +9,74 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { Link } from 'react-router-dom';
 // import Admin from "./admin/Admin"
+import { useRequest } from '../../hooks/useRequest'
 
 const Winter = () => {
 
+
+    const [posts, setPosts] = useState([]);
+    const sendRequest = useRequest()
+    console.log(posts)
+
+    useEffect(() => {
+        sendRequest(`${process.env.REACT_APP_API_URL}/posts/bycategory/${2}`, {}, {}, {
+            auth: true,
+        }, 'GET').then((response) => {
+            if (response?.success) {
+                setPosts(response.data)
+            }
+        })
+    }, [])
 
     return (
         <div>
             <div>
                 <ul className="nav justify-content-center mt-3 mb-2">
-                    <Link to="/allposts" className="nav-item" style={{ textDecoration: 'none'}}>
+                    <Link to="/allposts" className="nav-item" style={{ textDecoration: 'none' }}>
                         <a className="nav-link" style={{ color: "" }}><b>All posts</b></a>
                     </Link>
-                    <Link to="/winter" className="nav-item" style={{ textDecoration: 'none'}}>
+                    <Link to="/winter" className="nav-item" style={{ textDecoration: 'none' }}>
                         <a className="nav-link" href="#"><b>Winter areas</b></a>
                     </Link>
-                    <Link to="/summer" className="nav-item" style={{ textDecoration: 'none'}}>
+                    <Link to="/summer" className="nav-item" style={{ textDecoration: 'none' }}>
                         <a className="nav-link" href="#"><b>Summer areas</b></a>
                     </Link>
-                    <Link to="/other" className="nav-item" style={{ textDecoration: 'none'}}>
+                    <Link to="/other" className="nav-item" style={{ textDecoration: 'none' }}>
                         <a className="nav-link" href="#"><b>Other</b></a>
                     </Link>
                 </ul>
             </div>
-            <div className="d-flex justify-content-evenly flex-wrap">
-                <Link to="/singlepost" className="card m-4" style={{ width: "18rem", backgroundColor: "", textDecoration: "none", color: "black" }}>
-                    <Card sx={{ maxWidth: 345 }}>
-                        <CardActionArea>
-                            <CardMedia
-                                component="img"
-                                height="140"
-                                image="https://www.unitedtowers.com/Media/2021/04/08/image-LlJtrYkN3ka1lCVqhfwyrw.jpg"
-                                alt="green iguana"
-                            />
-                            <CardContent>
-                                <Typography gutterBottom variant="h5" component="div">
-                                    Canada
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    Canada is a parliamentary democracy and a constitutional monarchy in the Westminster tradition.
-                                    The country's head of government
-                                </Typography>
-                            </CardContent>
-                        </CardActionArea>
-                    </Card>
-                </Link>
+            <div className='d-flex justify-content-center align-items-center flex-wrap'>
+                {posts && posts.length ? posts.map((post, i) => {
+                    return (
+                        < div className="d-flex justify-content-evenly flex-wrap">
+                            <Link to={"/singlepost/" + post.id} className="card m-4" style={{ width: "18rem", backgroundColor: "", textDecoration: "none", color: "black" }}>
+                                <Card sx={{ maxWidth: 345 }}>
+                                    <CardActionArea>
+                                        <CardMedia
+                                            component="img"
+                                            height="140"
+                                            image={post.image}
+                                            alt={post.title}
+                                        />
+                                        <CardContent>
+                                            <Typography gutterBottom variant="h5" component="div">
+                                                {post.title}
+                                            </Typography>
+                                            <Typography variant="body2" color="text.secondary">
+                                                {post.description}
+                                            </Typography>
+                                        </CardContent>
+                                    </CardActionArea>
+                                </Card>
+                            </Link>
+                        </div>
+                    )
+                })
+
+                    :
+                    null
+                }
             </div>
         </div>
     )
