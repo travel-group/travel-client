@@ -75,7 +75,7 @@ const EditPost = () => {
 			.then((response) => {
 				window.alert(response?.messages)
 				if (response?.success) {
-					navigate('/posts')
+					navigate('/account')
 				}
 			})
 	}
