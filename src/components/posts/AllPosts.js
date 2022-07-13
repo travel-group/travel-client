@@ -28,7 +28,7 @@ const AllPosts = () => {
     }, [])
 
     return (
-        <div>
+        <>
             <div>
                 <ul className="nav justify-content-center mt-3 mb-2">
                     <Link to="/allposts" className="nav-item" style={{ textDecoration: 'none' }}>
@@ -77,7 +77,7 @@ const AllPosts = () => {
                     null
                 }
             </div>
-        </div >
+        </>
     );
 }
 

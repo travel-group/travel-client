@@ -6,7 +6,6 @@ import SignUp from "./components/account/SignUp";
 import Login from "./components/account/Login";
 import Nav from "./components/Nav";
 import AllPosts from "./components/posts/AllPosts";
-import Countries from "./components/posts/Summer";
 import Account from "./components/account/Account";
 import Posts from "././components/account/user/Posts";
 import AddPost from "./components/account/user/AddPost";
@@ -15,7 +14,10 @@ import EditPost from "./components/account/user/EditPost";
 import Summer from "./components/posts/Summer";
 import Winter from "./components/posts/Winter";
 import Other from "./components/posts/Other";
-
+import Categories from "./components/account/admin/Categoris";
+import Countries from "./components/account/admin/Countries";
+import Users from "./components/account/admin/users";
+import Post from "./components/account/admin/AddPost";
 
 const App = () => {
   return (
@@ -28,13 +30,10 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
         <Route path="/singlepost/:id" element={<SinglePost />} />
-        {/* <Route path="/account" element={<Account />} /> */}
         <Route path="/allposts" element={<AllPosts />} />
-        <Route path="/countries" element={<Countries />} />
         <Route path="/summer" element={<Summer />} />
         <Route path="/winter" element={<Winter />} />
         <Route path="/other" element={<Other />} />
-
 
 
           <Route path="/account" element={<Account/>} >
@@ -42,6 +41,14 @@ const App = () => {
             <Route path="/account/addpost" element={<AddPost/>}/>
             <Route path="/account/edit/:id" element={<EditPost/>}/>
             <Route path="/account/user" element={<EditProfile/>}/> 
+          </Route> 
+
+
+          <Route path="/account" element={<Account/>} >
+            <Route path='/account/countries' element={<Countries />} />
+            <Route path='/account/categories' element={<Categories />} />
+            <Route path='/account/users' element={<Users />} />
+            <Route path='/account/add-post' element={<Post />} />
           </Route> 
 
 

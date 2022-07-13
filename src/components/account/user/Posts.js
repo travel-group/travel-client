@@ -45,7 +45,6 @@ const Posts = () => {
             </thead>
             <tbody>
                 {posts.map((post, i) => {
-                    console.log(posts)
                     return (
                         <tr key={i}>
                             <td>{post?.title}</td>

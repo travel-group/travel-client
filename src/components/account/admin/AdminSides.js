@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-const UserSides = () => {
+const AdminSides = () => {
     return (
         <div>
                 <ul className="nav justify-content-center mt-3 mb-2">
@@ -10,12 +10,12 @@ const UserSides = () => {
                     <Link to="posts" className="nav-item" style={{ textDecoration: 'none'}}>
                         <a className="nav-link" ><b>Your Posts</b></a>
                     </Link>
-                    <Link to="user" className="nav-item" style={{ textDecoration: 'none'}}>
-                        <a className="nav-link" ><b>Edit Your Profile</b></a>
+                    <Link to="users" className="nav-item" style={{ textDecoration: 'none'}}>
+                        <a className="nav-link" ><b>Users</b></a>
                     </Link>
                 </ul>
-        </div> 
+            </div> 
     );
 };
 
-export default UserSides
+export default AdminSides

@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useRequest } from "../hooks2/useRequest";
-import { Link } from "react-router-dom";
 
 const Categories = () => {
 	const sendRequest = useRequest();
@@ -20,18 +19,14 @@ const Categories = () => {
 	}, []);
 
 	const deletCategorie = (id) => {
-		if (window.confirm("Do you want to delete this Categorie")) {
+		if (window.confirm("Do you want to delete this Category")) {
 			sendRequest(`${process.env.REACT_APP_API_URL}/categories/${id}`, {}, {}, {
 				auth: true,
-			},
-				"DELETE"
-			).then((response) => {
-				console.log(response);
+			}, "DELETE" ).then((response) => {
+				// console.log(response);
 				if (response?.success) {
 					const currentCategories = [...categories];
-					const filteredCategories = currentCategories.filter(
-						(category) => category.id != id
-					);
+					const filteredCategories = currentCategories.filter((category) => category.id != id);
 					setCategories(filteredCategories);
 				}
 			});
@@ -39,13 +34,13 @@ const Categories = () => {
 	};
 
 	const addCat = () => {
-		sendRequest(`${process.env.REACT_APP_API_URL}/categories/`, {}, {
-			title: nameRef.current.value,
+		sendRequest(`${process.env.REACT_APP_API_URL}/categories/add`, {}, {
+			name : nameRef.current.value,
 		},
 			{ auth: true, type: "json" },
 			"POST"
 		).then((newCategory) => {
-			window.alert(newCategory?.messages?.join(" "));
+			window.alert(newCategory?.messages);
 			if (newCategory?.success == true) {
 				window.location.reload()
 			}
@@ -70,32 +65,19 @@ const Categories = () => {
 			<table className="w-100 table table-striped">
 				<thead>
 					<tr>
-						<th>Title</th>
-						<th>Options</th>
+						<th>Categories</th>
+						<th>Delete</th>
 					</tr>
 				</thead>
 				<tbody>
 					{categories.map((category, i) => {
 						return (
 							<tr key={i}>
-								<td>{category?.title}</td>
+								<td>{category?.name}</td>
 								<td>
-									<button
-										onClick={() => {
-											deletCategorie(category.id);
-										}}
-										className="btn btn-primary"
-									>
-										Delete
+									<button onClick={() => { deletCategorie(category.id) }} className="btn btn-primary">
+										Delete 
 									</button>
-									<Link to={`/account/edit/${category.id}`}>
-										<button
-											className="btn btn-primary"
-											style={{ marginLeft: "8px" }}
-										>
-											Edit
-										</button>
-									</Link>
 								</td>
 							</tr>
 						);

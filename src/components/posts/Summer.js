@@ -49,10 +49,10 @@ export default function Summer() {
                 </ul>
             </div>
             <div className='d-flex justify-content-center align-items-center flex-wrap'>
-                {posts && posts.length ? posts.map((post, i) => {
+            {posts && posts.length ? posts.map((post, i) => {
                     return (
                         < div className="d-flex justify-content-evenly flex-wrap">
-                            <Link to={"/singlepost/" + post.id} className="card m-4" style={{ width: "18rem", backgroundColor: "", textDecoration: "none", color: "black" }}>
+                            <Link to={"/singlepost/"+post.id} className="card m-4" style={{ width: "18rem", backgroundColor: "", textDecoration: "none", color: "black" }}>
                                 <Card sx={{ maxWidth: 345 }}>
                                     <CardActionArea>
                                         <CardMedia
@@ -75,7 +75,6 @@ export default function Summer() {
                         </div>
                     )
                 })
-
                     :
                     null
                 }
