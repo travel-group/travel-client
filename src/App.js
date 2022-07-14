@@ -18,6 +18,7 @@ import Categories from "./components/account/admin/Categoris";
 import Countries from "./components/account/admin/Countries";
 import Users from "./components/account/admin/users";
 import Post from "./components/account/admin/AddPost";
+import AdminPosts from "./components/account/admin/AdminPosts";
 
 const App = () => {
   return (
@@ -49,6 +50,7 @@ const App = () => {
             <Route path='/account/categories' element={<Categories />} />
             <Route path='/account/users' element={<Users />} />
             <Route path='/account/add-post' element={<Post />} />
+            <Route path='/account/adminposts' element={<AdminPosts />} />
           </Route> 
 
 

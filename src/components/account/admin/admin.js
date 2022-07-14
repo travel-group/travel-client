@@ -5,6 +5,7 @@ import Users from "./users";
 import AdminSides from "./AdminSides";
 import Post from "./AddPost";
 import Posts from "./posts";
+import AdminPosts from "./AdminPosts";
 
 const Admin = () => {
 
@@ -20,6 +21,7 @@ const Admin = () => {
                     <Route exact path="/users" element={<Users/>} />
                     <Route exact path="/add-post" element={<Post/>} />
                     <Route exact path="/posts" element={<Posts/>} />
+                    <Route exact path="/adminposts" element={<AdminPosts/>} />
                 </Routes>
             </div>
             </div>

@@ -56,7 +56,7 @@ const Post = () => {
 				// window.alert(response?.messages)
 				if (response?.success) {
 					alert('Post Created')
-					navigate('/account/posts')
+					navigate('/posts')
 				}
 			})
 	}
