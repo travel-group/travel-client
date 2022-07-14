@@ -7,16 +7,10 @@ import { CardActionArea } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useRequest } from '../../hooks/useRequest'
-
-
-
-
 const AllPosts = () => {
-
     const [posts, setPosts] = useState([]);
     const sendRequest = useRequest()
     console.log(posts)
-
     useEffect(() => {
         sendRequest(`${process.env.REACT_APP_API_URL}/posts`, {}, {}, {
             auth: true,
@@ -26,9 +20,8 @@ const AllPosts = () => {
             }
         })
     }, [])
-
     return (
-        <>
+        <div>
             <div>
                 <ul className="nav justify-content-center mt-3 mb-2">
                     <Link to="/allposts" className="nav-item" style={{ textDecoration: 'none' }}>
@@ -49,7 +42,7 @@ const AllPosts = () => {
                 {posts && posts.length ? posts.map((post, i) => {
                     return (
                         < div className="d-flex justify-content-evenly flex-wrap">
-                            <Link to={"/singlepost/"+post.id} className="card m-4" style={{ width: "18rem", backgroundColor: "", textDecoration: "none", color: "black" }}>
+                            <Link to={"/singlepost/" + post.id} className="card m-4" style={{ width: "18rem", backgroundColor: "", textDecoration: "none", color: "black" }}>
                                 <Card sx={{ maxWidth: 345 }}>
                                     <CardActionArea>
                                         <CardMedia
@@ -72,14 +65,14 @@ const AllPosts = () => {
                         </div>
                     )
                 })
-
                     :
-                    null
-                }
+                    <div className="d-flex justify-content-center mb-5">
+                        < div className="spinner-border" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                    </div>}
             </div>
-        </>
+        </div >
     );
 }
-
-
 export default AllPosts;

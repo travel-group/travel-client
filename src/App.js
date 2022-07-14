@@ -24,7 +24,6 @@ const App = () => {
   return (
     <BrowserRouter>
       <Nav />
-      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
@@ -41,7 +40,7 @@ const App = () => {
             <Route path="/account/posts" element={<Posts/>}/>
             <Route path="/account/addpost" element={<AddPost/>}/>
             <Route path="/account/edit/:id" element={<EditPost/>}/>
-            <Route path="/account/user" element={<EditProfile/>}/> 
+            <Route path="/account/edituser" element={<EditProfile/>}/> 
           </Route> 
 
 

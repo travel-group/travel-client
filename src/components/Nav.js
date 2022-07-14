@@ -2,11 +2,9 @@ import { Link } from "react-router-dom";
 import { useContext, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../contexts/AuthContext"
-
 const Nav = () => {
     const auth = useContext(AuthContext)
     const navigate = useNavigate()
-
     const logout = () => {    
         auth.logout()
         if(window.confirm('Log Out')) {
@@ -15,9 +13,7 @@ const Nav = () => {
             navigate('/allposts')
         }
     }
-
     return (
-
         <nav className=" container-fluid bg-black px-5 ">
             <div className="navbar navbar-expand-lg navbar-dark d-flex justify-content-between">
                 {/* <div className="container-fluid">
@@ -27,7 +23,7 @@ const Nav = () => {
                     <img src="blob:https://web.whatsapp.com/222d8cf2-7721-46c2-99eb-876805066f6f" className="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="65px" height="65px" loading="lazy" />
                 </div> */}
                 <Link to="/" className="">
-                    <img src={process.env.PUBLIC_URL + "./assert/travelll.png"} className="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="100px" height="80px" loading="lazy" />
+                    <img src="./assert/travelll.png" className="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="100px" height="80px" loading="lazy" />
                 </Link>
                 <div className="d-flex justify-content-center">
                     <Link to="/" className="btn " style={{ color: "white" }} >Home</Link>
@@ -49,12 +45,4 @@ const Nav = () => {
         </nav>
     )
 }
-
 export default Nav;
-
-
-
-
-
-
- 

@@ -10,15 +10,10 @@ import { CardActionArea } from '@mui/material';
 import { Link } from 'react-router-dom';
 // import Admin from "./admin/Admin"
 import { useRequest } from '../../hooks/useRequest'
-
-
 export default function Summer() {
-
-
     const [posts, setPosts] = useState([]);
     const sendRequest = useRequest()
     console.log(posts)
-
     useEffect(() => {
         sendRequest(`${process.env.REACT_APP_API_URL}/posts/bycategory/${1}`, {}, {}, {
             auth: true,
@@ -28,8 +23,6 @@ export default function Summer() {
             }
         })
     }, [])
-
-
     return (
         <div>
             <div>
@@ -49,10 +42,10 @@ export default function Summer() {
                 </ul>
             </div>
             <div className='d-flex justify-content-center align-items-center flex-wrap'>
-            {posts && posts.length ? posts.map((post, i) => {
+                {posts && posts.length ? posts.map((post, i) => {
                     return (
                         < div className="d-flex justify-content-evenly flex-wrap">
-                            <Link to={"/singlepost/"+post.id} className="card m-4" style={{ width: "18rem", backgroundColor: "", textDecoration: "none", color: "black" }}>
+                            <Link to={"/singlepost/" + post.id} className="card m-4" style={{ width: "18rem", backgroundColor: "", textDecoration: "none", color: "black" }}>
                                 <Card sx={{ maxWidth: 345 }}>
                                     <CardActionArea>
                                         <CardMedia
@@ -76,8 +69,11 @@ export default function Summer() {
                     )
                 })
                     :
-                    null
-                }
+                    <div className="d-flex justify-content-center mb-5">
+                        < div className="spinner-border" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                    </div>}
             </div>
         </div>
     )

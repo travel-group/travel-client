@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-
 export const AuthContext = createContext({
     isAuthenticated: false,
     token: '',
@@ -12,11 +11,13 @@ export const AuthContext = createContext({
     const [token, setToken] = useState(window.localStorage.getItem('token'))
     const [isAuthenticated, setIsAuthenticated] = useState(!!token)
     const [user, setUser] = useState(JSON.parse( window.localStorage.getItem('user') || '{}' ))
+    console.log("user: ", user);
     
     const login = (response) => {
         console.log(response,'response -------')
         setToken(response.token)
         setUser(response.user)
+        console.log("response.user: ", response.user);
         window.localStorage.setItem('token', response.token)
         window.localStorage.setItem('user', JSON.stringify(response.user))
         setIsAuthenticated(true)

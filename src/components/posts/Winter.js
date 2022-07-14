@@ -10,14 +10,10 @@ import { CardActionArea } from '@mui/material';
 import { Link } from 'react-router-dom';
 // import Admin from "./admin/Admin"
 import { useRequest } from '../../hooks/useRequest'
-
 const Winter = () => {
-
-
     const [posts, setPosts] = useState([]);
     const sendRequest = useRequest()
     console.log(posts)
-
     useEffect(() => {
         sendRequest(`${process.env.REACT_APP_API_URL}/posts/bycategory/${2}`, {}, {}, {
             auth: true,
@@ -27,7 +23,6 @@ const Winter = () => {
             }
         })
     }, [])
-
     return (
         <div>
             <div>
@@ -73,13 +68,14 @@ const Winter = () => {
                         </div>
                     )
                 })
-
                     :
-                    null
-                }
+                    <div className="d-flex justify-content-center mb-5">
+                        < div className="spinner-border" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                    </div>}
             </div>
         </div>
     )
 }
-
 export default Winter

@@ -7,16 +7,11 @@ import { CardActionArea } from '@mui/material';
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useRequest } from '../hooks/useRequest'
-
-
-
 const SinglePost = () => {
-
     const { id } = useParams();
     const [post, setPost] = useState();
     const sendRequest = useRequest()
     console.log(post)
-
     useEffect(() => {
         sendRequest(`${process.env.REACT_APP_API_URL}/posts/${id}`, {}, {}, {
             auth: true,
@@ -26,50 +21,44 @@ const SinglePost = () => {
             }
         })
     }, [])
-
-
     return (
         <div className="">
             <div>
-                <ul className="nav justify-content-center mt-3 mb-2">
+                <ul className="nav justify-content-center mt-3 mb-4">
                     <Link to="/allposts" className="nav-item" style={{ textDecoration: 'none' }}>
-                        <a className="nav-link" style={{ color: "" }}><b>All posts</b></a>
+                        <li className="nav-link" style={{ color: "" }}><b>All posts</b></li>
                     </Link>
-                    <Link to="/winter" className="nav-item" style={{ textDecoration: 'none' }}>
-                        <a className="nav-link" href="#"><b>Winter areas</b></a>
+                    <Link to="/w className='d-flex justify-content-center align-items-center flex-wrapinter" className="nav-item" style={{ textDecoration: 'none' }}>
+                        <li className="nav-link" href="#"><b>Winter areas</b></li>
                     </Link>
                     <Link to="/summer" className="nav-item" style={{ textDecoration: 'none' }}>
-                        <a className="nav-link" href="#"><b>Summer areas</b></a>
+                        <li className="nav-link" href="#"><b>Summer areas</b></li>
                     </Link>
                 </ul>
             </div>
             {post ?
-                <div className="d-flex justify-content-evenly flex-wrap">
-                    <a className="card m-4" style={{ width: "18rem", backgroundColor: "", textDecoration: "none", color: "black" }}>
-                        <Card sx={{ maxWidth: 345 }}>
-                            {/* <CardActionArea> */}
-                            <CardMedia
-                                component="img"
-                                height="140"
-                                image={post.image}
-                                alt={post.title}
-                            />
-                            <CardContent>
-                                <Typography gutterBottom variant="h5" component="div">
-                                    {post.title}
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    {post.description}
-                                </Typography>
-                            </CardContent>
-                            {/* </CardActionArea> */}
-                        </Card>
-                    </a>
+                <div className='d-flex justify-content-center'>
+                    <div className="card mb-3" style={{ width: "1000px", height: "auto" }}>
+                        <div className="row g-0">
+                            <div className="col-md-4">
+                                <img src={post.image} className="img-fluid rounded-start" alt="..." />
+                            </div>
+                            <div className="col-md-8">
+                                <div className="card-body">
+                                    <h5 className="card-title">{post.title}</h5>
+                                    <p className="card-text">{post.title}</p>
+                                    <p className="card-text"><small className="text-muted">{post.description}</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 :
-                null
-            }
-
+                <div className="d-flex justify-content-center mb-5">
+                    < div className="spinner-border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </div>
+                </div>}
             < div className="d-flex justify-content-center mb-3">
                 <Link to="/allposts" type="button" className="btn btn-primary">Back</Link>
             </div>
@@ -77,23 +66,3 @@ const SinglePost = () => {
     )
 }
 export default SinglePost;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

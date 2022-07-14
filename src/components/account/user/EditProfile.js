@@ -2,12 +2,13 @@ import {  useState, useRef, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../../contexts/AuthContext"
 import { useRequest } from "../hooks2/useRequest"
-
 const EditProfile = () => {
+    console.log("I AM IN EDIT PROFILE");
     const navigate = useNavigate()
     // const  id = useParams()
     const sendRequest = useRequest()
     const auth = useContext(AuthContext)
+    console.log("auth = ",auth);
     const [user, setUser] = useState({
         firstname: auth?.user?.firstname,
         lastname: auth?.user?.lastname,
@@ -20,9 +21,8 @@ const EditProfile = () => {
     const emailRef = useRef()
     const usernameRef = useRef()
     const passwordRef = useRef()
-
     const addUser = () => {
-        sendRequest(`${process.env.REACT_APP_API_URL}/users/update/:${auth?.user?.id}`, {}, {
+        sendRequest(`${process.env.REACT_APP_API_URL}/users/update/${auth?.user?.id}`, {}, {
             firstname: firstnameRef.current.value,
             lastname: lastnameRef.current.value,
             email: emailRef.current.value,
@@ -48,38 +48,31 @@ const EditProfile = () => {
                         <img src={auth?.user?.avatar} />
                     </div>
                     <div className="form-wrapper">
-
                         <h6>Edit Your First Name:</h6>
                         <input type={"text"}
                             onChange={(e) => { setUser({ ...user, firstname: e.target.value }) }}
-                            value={user?.name} ref={firstnameRef} className="form-control" placeholder="first name" />
-
+                            value={user?.firstname} ref={firstnameRef} className="form-control" placeholder="first name" />
                         <h6>Edit Your Last Name:</h6>
                         <input type={"text"}
                             onChange={(e) => { setUser({ ...user, lastname: e.target.value }) }}
-                            value={user?.name} ref={lastnameRef} className="form-control" placeholder="last name" />
-
+                            value={user?.lastname} ref={lastnameRef} className="form-control" placeholder="last name" />
                         <h6>Edit Your Email:</h6>
                         <input type={"text"}
                             onChange={(e) => { setUser({ ...user, email: e.target.value }) }}
                             value={user?.email} ref={emailRef} className="form-control" placeholder="email" />
-
                         <h6>Edit Your Username :</h6>
                         <input type={"text"}
                             onChange={(e) => { setUser({ ...user, username: e.target.value }) }}
-                            value={user?.password} ref={passwordRef} className="form-control" placeholder="username" />
-
+                            value={user?.username} ref={usernameRef} className="form-control" placeholder="username" />
                         <h6 className="small-password">Edit Your Password :</h6>
                         <input type={"password"}
                             onChange={(e) => { setUser({ ...user, password: e.target.value }) }}
-                            value={user?.password_confirmation} ref={passwordRef} className="form-control" placeholder="password" />
-
-                        <button onClick={addUser} type="button" className="btn btn-primary">Submit</button>
+                            value={user?.password} ref={passwordRef} className="form-control" placeholder="password" />
+                        <button onClick={addUser} type="button" className="btn btn-primary my-5">Submit</button>
                     </div>
                 </div>
             </div>
         </div>
     )
 }
-
-export default EditProfile
+export default EditProfile;

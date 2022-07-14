@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom"
-
 const UserSides = () => {
     return (
         <div>
@@ -10,12 +9,11 @@ const UserSides = () => {
                     <Link to="posts" className="nav-item" style={{ textDecoration: 'none'}}>
                         <a className="nav-link" ><b>Your Posts</b></a>
                     </Link>
-                    <Link to="user" className="nav-item" style={{ textDecoration: 'none'}}>
+                    <Link to="edituser" className="nav-item" style={{ textDecoration: 'none'}}>
                         <a className="nav-link" ><b>Edit Your Profile</b></a>
                     </Link>
                 </ul>
-        </div> 
+            </div> 
     );
 };
-
 export default UserSides
