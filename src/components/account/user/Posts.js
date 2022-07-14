@@ -22,7 +22,6 @@ const Posts = () => {
             sendRequest(`${process.env.REACT_APP_API_URL}/posts/${id}`, {}, {}, {
                 auth: true,
             }, 'DELETE').then((response) => {
-                console.log(response)
                 if (response?.success) {
                     const currentPosts = [...posts]
                     const filteredPosts = currentPosts.filter((post) => post.id !== id)

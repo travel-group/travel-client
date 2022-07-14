@@ -13,7 +13,6 @@ import { useRequest } from '../../hooks/useRequest'
 export default function Other() {
     const [posts, setPosts] = useState([]);
     const sendRequest = useRequest()
-    console.log(posts)
     useEffect(() => {
         sendRequest(`${process.env.REACT_APP_API_URL}/posts/bycategory/${3}`, {}, {}, {
             auth: true,
@@ -59,7 +58,7 @@ export default function Other() {
                                                 {post.title}
                                             </Typography>
                                             <Typography variant="body2" color="text.secondary">
-                                                {post.description}
+                                                
                                             </Typography>
                                         </CardContent>
                                     </CardActionArea>
@@ -70,9 +69,9 @@ export default function Other() {
                 })
                     :
                     <div className="d-flex justify-content-center mb-5">
-                        < div className="spinner-border" role="status">
+                        {/* < div className="spinner-border" role="status">
                             <span className="visually-hidden">Loading...</span>
-                        </div>
+                        </div> */}
                     </div>}
             </div>
         </div>

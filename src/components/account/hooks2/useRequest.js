@@ -31,9 +31,6 @@ export const useRequest = () => {
                     return
                 }
                 return response.json().then(data => {
-                    if (data?.success && config?.redirect) {
-                        // navigate(config.redirect)
-                    }
                     return data
                 })
             })

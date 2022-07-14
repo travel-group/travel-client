@@ -23,21 +23,16 @@ const theme = createTheme();
 const Login = () => {
   const navigate = useNavigate();
   const sendRequest = useRequest()
-  // const userNameOrEmailRef = useRef()
-  // const passwordRef = useRef()
   const auth = useContext(AuthContext)
   const handleSubmit = (event) => {
     event.preventDefault();
-    // const password = passwordRef.current.value
-    // const userNameOrEmail = userNameOrEmailRef.current.value
     sendRequest(process.env.REACT_APP_API_URL + "/users/login", {}, {
       userNameOrEmail: event.target.querySelector('input[name=userNameOrEmail]').value,
       password: event.target.querySelector('input[name=password]').value
     }, { type: 'json' }, 'POST')
       .then((response) => {
         if (response.success) {
-          auth.login(response)
-          // console.log(auth.login)  
+          auth.login(response) 
           navigate('/')
         } else {
           window.alert(response.messages)

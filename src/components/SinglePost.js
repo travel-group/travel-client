@@ -11,7 +11,6 @@ const SinglePost = () => {
     const { id } = useParams();
     const [post, setPost] = useState();
     const sendRequest = useRequest()
-    console.log(post)
     useEffect(() => {
         sendRequest(`${process.env.REACT_APP_API_URL}/posts/${id}`, {}, {}, {
             auth: true,
@@ -34,6 +33,9 @@ const SinglePost = () => {
                     <Link to="/summer" className="nav-item" style={{ textDecoration: 'none' }}>
                         <li className="nav-link" href="#"><b>Summer areas</b></li>
                     </Link>
+                    <Link to="/other" className="nav-item" style={{ textDecoration: 'none' }}>
+                        <a className="nav-link" href="#"><b>Other</b></a>
+                    </Link>
                 </ul>
             </div>
             {post ?
@@ -46,7 +48,8 @@ const SinglePost = () => {
                             <div className="col-md-8">
                                 <div className="card-body">
                                     <h5 className="card-title">{post.title}</h5>
-                                    <p className="card-text">{post.title}</p>
+                                    <p className="card-text">country : {post.country.country_name}</p>
+                                    <p className="card-text">category : {post.category.name}</p>
                                     <p className="card-text"><small className="text-muted">{post.description}</small></p>
                                 </div>
                             </div>

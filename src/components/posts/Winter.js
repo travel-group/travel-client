@@ -13,7 +13,6 @@ import { useRequest } from '../../hooks/useRequest'
 const Winter = () => {
     const [posts, setPosts] = useState([]);
     const sendRequest = useRequest()
-    console.log(posts)
     useEffect(() => {
         sendRequest(`${process.env.REACT_APP_API_URL}/posts/bycategory/${2}`, {}, {}, {
             auth: true,
@@ -59,7 +58,7 @@ const Winter = () => {
                                                 {post.title}
                                             </Typography>
                                             <Typography variant="body2" color="text.secondary">
-                                                {post.description}
+                                                
                                             </Typography>
                                         </CardContent>
                                     </CardActionArea>

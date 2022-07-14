@@ -22,6 +22,9 @@ const AdminSides = () => {
                     <Link to="categories" className="nav-item" style={{ textDecoration: 'none'}}>
                         <a className="nav-link" ><b>Categories</b></a>
                     </Link>
+                    <Link to="editadmin" className="nav-item" style={{ textDecoration: 'none'}}>
+                        <a className="nav-link" ><b>Edit Your Profile</b></a>
+                    </Link>
                 </ul>
             </div> 
     );

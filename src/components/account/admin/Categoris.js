@@ -23,7 +23,6 @@ const Categories = () => {
 			sendRequest(`${process.env.REACT_APP_API_URL}/categories/${id}`, {}, {}, {
 				auth: true,
 			}, "DELETE" ).then((response) => {
-				// console.log(response);
 				if (response?.success) {
 					const currentCategories = [...categories];
 					const filteredCategories = currentCategories.filter((category) => category.id != id);

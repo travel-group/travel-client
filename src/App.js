@@ -19,6 +19,8 @@ import Countries from "./components/account/admin/Countries";
 import Users from "./components/account/admin/users";
 import Post from "./components/account/admin/AddPost";
 import AdminPosts from "./components/account/admin/AdminPosts";
+import EditAdminProfile from "./components/account/admin/EditAdmiProfile";
+
 
 const App = () => {
   return (
@@ -50,6 +52,7 @@ const App = () => {
             <Route path='/account/users' element={<Users />} />
             <Route path='/account/add-post' element={<Post />} />
             <Route path='/account/adminposts' element={<AdminPosts />} />
+            <Route path='/account/editadmin' element={<EditAdminProfile />} />
           </Route> 
 
 

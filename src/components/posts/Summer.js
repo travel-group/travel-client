@@ -13,7 +13,6 @@ import { useRequest } from '../../hooks/useRequest'
 export default function Summer() {
     const [posts, setPosts] = useState([]);
     const sendRequest = useRequest()
-    console.log(posts)
     useEffect(() => {
         sendRequest(`${process.env.REACT_APP_API_URL}/posts/bycategory/${1}`, {}, {}, {
             auth: true,
@@ -23,6 +22,7 @@ export default function Summer() {
             }
         })
     }, [])
+    console.log(posts)
     return (
         <div>
             <div>
@@ -59,7 +59,7 @@ export default function Summer() {
                                                 {post.title}
                                             </Typography>
                                             <Typography variant="body2" color="text.secondary">
-                                                {post.description}
+                                                
                                             </Typography>
                                         </CardContent>
                                     </CardActionArea>

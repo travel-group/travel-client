@@ -22,7 +22,6 @@ const Users = () => {
 			sendRequest(`${process.env.REACT_APP_API_URL}/users/${id}`, {}, {}, {
 				auth: true,
 			}, "DELETE" ).then((response) => {
-				// console.log(response);
 				if (response?.success) {
 					const currentCountries = [...users];
 					const filteredCountries = currentCountries.filter((user) => user.id != id);
