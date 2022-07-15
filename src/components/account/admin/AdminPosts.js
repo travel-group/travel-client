@@ -51,7 +51,7 @@ const AdminPosts = () => {
                             <td>{post.country.country_name}</td>
                             <td >
                                 <button onClick={() => { deletPost(post.id) }} className="btn btn-primary" >Delete</button>
-                                <Link to={`/account/edit/${post.id}`}>
+                                <Link to={`/account/editA/${post.id}`}>
                                     <button className="btn btn-primary" style={{ marginLeft: "2px" }}>Edit</button >
                                 </Link>
                             </td>

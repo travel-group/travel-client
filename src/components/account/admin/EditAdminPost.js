@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { useNavigate , useParams } from "react-router-dom";
 import { useRequest } from "../hooks2/useRequest";
 
-const EditPost = () => {
+const EditAdminPost = () => {
 	const navigate = useNavigate()
 	const {id}  = useParams()
 	const sendRequest = useRequest()
@@ -149,4 +149,4 @@ const EditPost = () => {
 	)
 }
 
-export default EditPost;
+export default EditAdminPost;

@@ -10,7 +10,7 @@ import { CardActionArea } from '@mui/material';
 import { Link } from 'react-router-dom';
 // import Admin from "./admin/Admin"
 import { useRequest } from '../../hooks/useRequest'
-export default function Other() {
+export default function Summer() {
     const [posts, setPosts] = useState([]);
     const sendRequest = useRequest()
     useEffect(() => {
@@ -22,6 +22,7 @@ export default function Other() {
             }
         })
     }, [])
+    console.log(posts)
     return (
         <div>
             <div>

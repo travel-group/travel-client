@@ -7,6 +7,7 @@ import Post from "./AddPost";
 import Posts from "./posts";
 import AdminPosts from "./AdminPosts";
 import EditAdminProfile from "./EditAdmiProfile";
+import EditAdminPost from "./EditAdminPost";
 
 const Admin = () => {
 
@@ -24,6 +25,7 @@ const Admin = () => {
                     <Route exact path="/posts" element={<Posts/>} />
                     <Route exact path="/adminposts" element={<AdminPosts/>} />
                     <Route exact path="/editadmin" element={<EditAdminProfile/>} />
+                    <Route exact path="/editA/:id" element={<EditAdminPost/>} />
                 </Routes>
             </div>
             </div>

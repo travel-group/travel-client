@@ -2,7 +2,7 @@ import {  useState, useRef, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../../contexts/AuthContext"
 import { useRequest } from "../hooks2/useRequest"
-const EditAdminProfile = () => {
+const EditProfile = () => {
     const navigate = useNavigate()
     // const  id = useParams()
     const sendRequest = useRequest()
@@ -73,4 +73,4 @@ const EditAdminProfile = () => {
         </div>
     )
 }
-export default EditAdminProfile;
+export default EditProfile;
