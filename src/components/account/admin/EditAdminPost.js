@@ -75,7 +75,7 @@ const EditAdminPost = () => {
 			.then((response) => {
 				window.alert(response?.messages)
 				if (response?.success) {
-					navigate('/account')
+					navigate('/account/adminposts')
 				}
 			})
 	}
@@ -95,13 +95,11 @@ const EditAdminPost = () => {
 							            <div  className="my-2 col-md-4 col-lg-3">
 							                <select className="form-select" ref={countriesRef} onClick={handlecountryToggle}>
 										        <optgroup placeholder="Select Country" label="Select Country">
+                                                            
 												    {countries?.map((country, i) => {
 									            	    return (
 															<>
-                                                            { 
-                                                                post?.country?.country_name && <option >{post?.country?.country_name}</option>
-                                                            }
-                                                                <option value={country.id}  key={i}>{country?.country_name}</option>
+                                                                    <option value={country.id} selected={post?.country?.country_name === country?.country_name ? true : false} key={i}>{country?.country_name}</option>
 															</>
 										                )
 									                })}
@@ -122,11 +120,7 @@ const EditAdminPost = () => {
 												    {categories?.map((category, i) => {
 									            	    return (
 															<>  
-															    {/* <option value="none" selected disabled hidden>Select Category</option> */}
-                                                            { 
-                                                                post?.category?.name && <option defaultValue={post?.category?.name}>{post?.category?.name}</option>
-                                                            }
-                                                                 <option value={category.id}  key={i}>{category?.name}</option>
+                                                                    <option value={category.id} selected={post?.category?.name === category?.name ? true : false} key={i}>{category?.name}</option>
 															</>
 										                )
 									                })}
