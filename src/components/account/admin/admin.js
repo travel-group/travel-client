@@ -4,7 +4,7 @@ import Countries from "./Countries";
 import Users from "./users";
 import AdminSides from "./AdminSides";
 import Post from "./AddPost";
-import Posts from "./posts";
+import Posts from "./Posts";
 import AdminPosts from "./AdminPosts";
 import EditAdminProfile from "./EditAdmiProfile";
 import EditAdminPost from "./EditAdminPost";
