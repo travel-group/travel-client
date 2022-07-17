@@ -31,9 +31,9 @@ const EditProfile = () => {
             auth: true
         }, 'put')
             .then((response) => {
-                window.alert(response?.messages?.join(' '))
+                window.alert(response?.messages)
                 if (response?.success) {
-                    navigate('/logout')
+                    navigate('/account/edituser')
                 }
             });
     }

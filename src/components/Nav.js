@@ -37,10 +37,14 @@ const Nav = () => {
                             </svg>
                         </a>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {auth.isAuthenticated && <>
                             <li> <Link to="/account" className="dropdown-item" style={{ color: "black" }} >My Account</Link></li>
+                            <li onClick={() => logout()} className="dropdown-item" style={{ color: "black" }} >Log Out</li>
+                        </>}
+                        {!auth.isAuthenticated && <>
                             <li> <Link to="/signup" className="dropdown-item" style={{ color: "black" }} >Sign Up</Link></li>
                             <li> <Link to="/login" className="dropdown-item" style={{ color: "black" }} >Log In</Link> </li>
-                            <li onClick={() => logout()} className="dropdown-item" style={{ color: "black" }} >Log Out</li>
+                        </>}
                         </ul>
                     </li>
                 </div>

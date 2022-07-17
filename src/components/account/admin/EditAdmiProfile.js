@@ -29,11 +29,11 @@ const EditProfile = () => {
         }, {
             type: 'json',
             auth: true
-        }, 'put')
+        }, 'PUT')
             .then((response) => {
-                window.alert(response?.messages?.join(' '))
+                window.alert(response?.messages)
                 if (response?.success) {
-                    navigate('/logout')
+                    navigate('/account/editadmin')
                 }
             });
     }
