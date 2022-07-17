@@ -134,7 +134,7 @@ const EditAdminPost = () => {
 							post?.image && <img src={post?.image} width='100' style={{ height: 'auto' }} />
 						}
 						<input type={"file"} ref={imageRef} className="form-control" placeholder="Image " />
-						<textarea ref={descriptionRef} className="form-control" placeholder="Your Description" defaultValue={post?.description}></textarea>
+						<textarea ref={descriptionRef} className="form-control" placeholder="Post Content" defaultValue={post?.description}></textarea>
 						<button onClick={addpost} type="button" className="btn btn-primary">Submit</button>
 					</div>
 				</div>

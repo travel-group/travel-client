@@ -113,7 +113,7 @@ const Post = () => {
 						    </div>
 						
 						<input type={"file"} ref={imageRef} className="form-control my-5 col-md-4 col-lg-3" placeholder="image" />
-						<textarea ref={descriptionRef} className="form-control" placeholder=" Description"></textarea>
+						<textarea ref={descriptionRef} className="form-control" placeholder="Post Content"></textarea>
 						<button onClick={addpost} type="button" className="btn btn-primary mt-5 col-md-4 col-lg-3">Submit</button>
 					</div>
 				</div>
