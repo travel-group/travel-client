@@ -8,16 +8,16 @@ export default function post() {
             <div>
                 <ul className="nav justify-content-center mt-3 mb-2" style={{ textDecoration: 'none'}}>
                     <Link to="/allposts" className="nav-item textDecoration: none">
-                        <a className="nav-link textDecoration: 'none" style={{ color: ''}}><b>All posts</b></a>
+                        <li className="nav-link textDecoration: 'none" style={{ color: ''}}><b>All posts</b></li>
                     </Link>
                     <Link to="/winter" className="nav-item" style={{ textDecoration: 'none'}}>
-                        <a className="nav-link" href="#"><b>Winter areas</b></a>
+                        <li className="nav-link" href="#"><b>Winter areas</b></li>
                     </Link>
                     <Link to="/summer" className="nav-item" style={{ textDecoration: 'none'}}>
-                        <a className="nav-link" href="#"><b>Summer areas</b></a>
+                        <li className="nav-link" href="#"><b>Summer areas</b></li>
                     </Link>
                     <Link to="/other" className="nav-item" style={{ textDecoration: 'none'}}>
-                        <a className="nav-link" href="#"><b>Other</b></a>
+                        <li className="nav-link" href="#"><b>Other</b></li>
                     </Link>
                 </ul>
             </div>

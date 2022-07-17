@@ -16,37 +16,30 @@ const Nav = () => {
     return (
         <nav className=" container-fluid bg-black px-5 ">
             <div className="navbar navbar-expand-lg navbar-dark d-flex justify-content-between">
-                {/* <div className="container-fluid">
-                <Link to="/" className="navbar-brand"><b>Travel</b></Link>
-            </div> */}
-                {/* <div className="">
-                    <img src="blob:https://web.whatsapp.com/222d8cf2-7721-46c2-99eb-876805066f6f" className="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="65px" height="65px" loading="lazy" />
-                </div> */}
                 <Link to="/" className="">
                     <img src="./assert/travelll.png" className="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="100px" height="80px" loading="lazy" />
                 </Link>
                 <div className="d-flex justify-content-center">
                     <Link to="/" className="btn " style={{ color: "white" }} >Home</Link>
                     <Link to="/allposts" className="btn " style={{ color: "white" }} >Posts</Link>
-                    {/* <Link to="/singlepost" className="btn " style={{ color: "white" }} >Single post</Link> */}
-                    <li className="nav-item dropdown d-flex justify-content-center align-items-center" style={{ color: "white" }}>
-                        <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ color: "white"  }}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <div className="nav-item dropdown d-flex justify-content-center align-items-center" style={{ color: "white" }}>
+                        <li className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ color: "white" }}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
                                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                <path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                             </svg>
-                        </a>
+                        </li>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                        {auth.isAuthenticated && <>
-                            <li> <Link to="/account" className="dropdown-item" style={{ color: "black" }} >My Account</Link></li>
-                            <li onClick={() => logout()} className="dropdown-item" style={{ color: "black" }} >Log Out</li>
-                        </>}
-                        {!auth.isAuthenticated && <>
-                            <li> <Link to="/signup" className="dropdown-item" style={{ color: "black" }} >Sign Up</Link></li>
-                            <li> <Link to="/login" className="dropdown-item" style={{ color: "black" }} >Log In</Link> </li>
-                        </>}
+                            {auth.isAuthenticated && <>
+                                <li> <Link to="/account" className="dropdown-item" style={{ color: "black" }} >My Account</Link></li>
+                                <li onClick={() => logout()} className="dropdown-item" style={{ color: "black" }} >Log Out</li>
+                            </>}
+                            {!auth.isAuthenticated && <>
+                                <li> <Link to="/signup" className="dropdown-item" style={{ color: "black" }} >Sign Up</Link></li>
+                                <li> <Link to="/login" className="dropdown-item" style={{ color: "black" }} >Log In</Link> </li>
+                            </>}
                         </ul>
-                    </li>
+                    </div>
                 </div>
             </div>
         </nav>

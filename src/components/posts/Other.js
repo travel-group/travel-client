@@ -28,23 +28,23 @@ export default function Summer() {
             <div>
                 <ul className="nav justify-content-center mt-3 mb-2">
                     <Link to="/allposts" className="nav-item" style={{ textDecoration: 'none' }}>
-                        <a className="nav-link" style={{ color: "" }}><b>All posts</b></a>
+                        <li className="nav-link" style={{ color: "" }}><b>All posts</b></li>
                     </Link>
                     <Link to="/winter" className="nav-item" style={{ textDecoration: 'none' }}>
-                        <a className="nav-link" href="#"><b>Winter areas</b></a>
+                        <li className="nav-link" href="#"><b>Winter areas</b></li>
                     </Link>
                     <Link to="/summer" className="nav-item" style={{ textDecoration: 'none' }}>
-                        <a className="nav-link" href="#"><b>Summer areas</b></a>
+                        <li className="nav-link" href="#"><b>Summer areas</b></li>
                     </Link>
                     <Link to="/other" className="nav-item" style={{ textDecoration: 'none' }}>
-                        <a className="nav-link" href="#"><b>Other</b></a>
+                        <li className="nav-link" href="#"><b>Other</b></li>
                     </Link>
                 </ul>
             </div>
             <div className='d-flex justify-content-center align-items-center flex-wrap'>
                 {posts && posts.length ? posts.map((post, i) => {
                     return (
-                        < div className="d-flex justify-content-evenly flex-wrap">
+                        < div className="d-flex justify-content-evenly flex-wrap" key={i}>
                             <Link to={"/singlepost/" + post.id} className="card m-4" style={{ width: "18rem", backgroundColor: "", textDecoration: "none", color: "black" }}>
                                 <Card sx={{ maxWidth: 345 }}>
                                     <CardActionArea>
@@ -59,7 +59,7 @@ export default function Summer() {
                                                 {post.title}
                                             </Typography>
                                             <Typography variant="body2" color="text.secondary">
-                                                
+
                                             </Typography>
                                         </CardContent>
                                     </CardActionArea>
@@ -69,11 +69,8 @@ export default function Summer() {
                     )
                 })
                     :
-                    <div className="d-flex justify-content-center mb-5">
-                        < div className="spinner-border" role="status">
-                            <span className="visually-hidden">Loading...</span>
-                        </div>
-                    </div>}
+                    <p>No posts available</p>
+                }
             </div>
         </div>
     )

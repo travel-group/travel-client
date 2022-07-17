@@ -34,7 +34,7 @@ const SinglePost = () => {
                         <li className="nav-link" href="#"><b>Summer areas</b></li>
                     </Link>
                     <Link to="/other" className="nav-item" style={{ textDecoration: 'none' }}>
-                        <a className="nav-link" href="#"><b>Other</b></a>
+                        <li className="nav-link" href="#"><b>Other</b></li>
                     </Link>
                 </ul>
             </div>

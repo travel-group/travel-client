@@ -19,7 +19,8 @@ const EditProfile = () => {
     const emailRef = useRef()
     const usernameRef = useRef()
     const passwordRef = useRef()
-    const addUser = () => {
+    const editUser = () => {
+        console.log(`${process.env.REACT_APP_API_URL}/users/update/${auth?.user?.id}`);
         sendRequest(`${process.env.REACT_APP_API_URL}/users/update/${auth?.user?.id}`, {}, {
             firstname: firstnameRef.current.value,
             lastname: lastnameRef.current.value,
@@ -66,7 +67,7 @@ const EditProfile = () => {
                         <input type={"password"}
                             onChange={(e) => { setUser({ ...user, password: e.target.value }) }}
                             value={user?.password} ref={passwordRef} className="form-control" placeholder="password" />
-                        <button onClick={addUser} type="button" className="btn btn-primary my-5">Submit</button>
+                        <button onClick={editUser} type="button" className="btn btn-primary my-5">Submit</button>
                     </div>
                 </div>
             </div>
