@@ -1,9 +1,4 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useRequest } from '../hooks/useRequest'
@@ -48,8 +43,8 @@ const SinglePost = () => {
                             <div className="col-md-8">
                                 <div className="card-body">
                                     <h5 className="card-title">{post.title}</h5>
-                                    <p className="card-text">country : {post.country.country_name}</p>
-                                    <p className="card-text">category : {post.category.name}</p>
+                                    <p className="card-text">Country : {post.country.country_name}</p>
+                                    <p className="card-text">Category : {post.category.name}</p>
                                     <p className="card-text"><small className="text-muted">{post.description}</small></p>
                                 </div>
                             </div>
